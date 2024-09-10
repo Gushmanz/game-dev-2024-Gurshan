@@ -5,14 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gurshan's Assignments</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
         h1 {
-            font-size: 48px; /* Makes the title big */
-            font-weight: bold; /* Makes the title bold */
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        video {
+            width: 80%;
+            max-width: 600px;
+            border: 5px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
     <h1>Gurshan's Assignments</h1>
+    <video id="webcam" autoplay></video>
+    <script>
+        const video = document.getElementById('webcam');
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                })
+                .catch(error => {
+                    console.error("Error accessing webcam: ", error);
+                });
+        } else {
+            alert("Webcam not supported by your browser.");
+        }
+    </script>
 </body>
 </html>
 <a href="https://gushmanz.github.io/game-dev-2024-Gurshan/public/image.html" target="https://gushmanz.github.io/game-dev-2024-Gurshan/public/index.html</a>

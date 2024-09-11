@@ -37,59 +37,6 @@
     <a href="https://github.com/Gushmanz/game-dev-2024-Gurshan">Github link</a
     <a href="https://gushmanz.github.io/game-dev-2024-Gurshan/public/image.html" target="https://gushmanz.github.io/game-dev-2024-Gurshan/public/index.html</a>                                                                           
     
-    <video id="webcam" autoplay></video>
-    <script>
-        const video = document.getElementById('webcam');
-
-        if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(stream => {
-                    video.srcObject = stream;
-                })
-                .catch(error => {
-                    console.error("Error accessing webcam: ", error);
-                });
-        } else {
-            alert("Webcam not supported by your browser.");
-        }
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webcam Integration</title>
-    <style>
-        h1 {
-            font-size: 48px;
-            font-weight: bold;
-        }
-        video {
-            width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-    <h1>G Webcam</h1>
-    <video id="webcam" autoplay></video>
-    <script>
-        const video = document.getElementById('webcam');
-
-        if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(stream => {
-                    video.srcObject = stream;
-                })
-                .catch(error => {
-                    console.error("Error accessing webcam: ", error);
-                });
-        } else {
-            alert("Webcam not supported by your browser.");
-        }
-    </script>
+   
 
     

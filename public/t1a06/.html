@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Input Value</title>
+</head>
+<body>
+    <h1>All In</h1>
+    <input type="text" id="myfirstname" value="Gush">
+    <input type="button" value="Show on Page" onclick="
+        // This is a comment
+        document.getElementById('display').innerHTML = 'Your name is ' + document.getElementById('myfirstname').value;
+    ">
+    <p id="display"></p>
+</body>
+</html>

@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Display Input Value</title>
+    <title>Display Input Values</title>
 </head>
 <body>
     <h1>All In</h1>
+    
     <input type="text" id="myfirstname" value="Gush">
-    <input type="button" value="Show on Page" onclick="
-        // This is a comment
-        document.getElementById('display').innerHTML = 'Your name is ' + document.getElementById('myfirstname').value;
+    <input type="button" value="Show First Name" onclick="
+        document.getElementById('displayFirstname').innerHTML = 'Your first name is ' + document.getElementById('myfirstname').value;
     ">
-    <p id="display"></p>
+    <p id="displayFirstname"></p>
+    
+    <input type="text" id="mylastname" value="Smith">
+    <input type="button" value="Show Last Name" onclick="
+        document.getElementById('displayLastname').innerHTML = 'Your last name is ' + document.getElementById('mylastname').value;
+    ">
+    <p id="displayLastname"></p>
+    
+    <input type="number" id="myage" value="25">
+    <input type="button" value="Show Age" onclick="
+        document.getElementById('displayAge').innerHTML = 'Your age is ' + document.getElementById('myage').value;
+    ">
+    <p id="displayAge"></p>
+    
+    <input type="email" id="myemail" value="example@example.com">
+    <input type="button" value="Show Email" onclick="
+        document.getElementById('displayEmail').innerHTML = 'Your email is ' + document.getElementById('myemail').value;
+    ">
+    <p id="displayEmail"></p>
+    
+    <input type="tel" id="myphone" value="123-456-7890">
+    <input type="button" value="Show Phone Number" onclick="
+        document.getElementById('displayPhone').innerHTML = 'Your phone number is ' + document.getElementById('myphone').value;
+    ">
+    <p id="displayPhone"></p>
+    
+    <input type="text" id="myaddress" value="123 Main St">
+    <input type="button" value="Show Address" onclick="
+        document.getElementById('displayAddress').innerHTML = 'Your address is ' + document.getElementById('myaddress').value;
+    ">
+    <p id="displayAddress"></p>
+    
+    <input type="text" id="mycity" value="Vancouver">
+    <input type="button" value="Show City" onclick="
+        document.getElementById('displayCity').innerHTML = 'Your city is ' + document.getElementById('mycity').value;
+    ">
+    <p id="displayCity"></p>
+    
+    <input type="text" id="mycountry" value="Canada">
+    <input type="button" value="Show Country" onclick="
+        document.getElementById('displayCountry').innerHTML = 'Your country is ' + document.getElementById('mycountry').value;
+    ">
+    <p id="displayCountry"></p>
+    
+    <input type="text" id="mycolor" value="Blue">
+    <input type="button" value="Show Favorite Color" onclick="
+        document.getElementById('displayColor').innerHTML = 'Your favorite color is ' + document.getElementById('mycolor').value;
+    ">
+    <p id="displayColor"></p>
+
 </body>
 </html>

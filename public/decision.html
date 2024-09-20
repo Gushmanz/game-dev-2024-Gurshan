@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Decision Making with Buttons</title>
+</head>
+<body>
+    <h1 align="center">ta09-decision-if-gurshan.html</h1>
+    
+    Input:<input type="text" id="myText1" value="Gurshan">
+    Input:<input type="number" id="myNum1" value="14">
+    <div id="myDiv01">...</div>
+    
+    <!-- Button 1: Simple if condition -->
+    <input type="button" value="Is Gurshan" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        document.getElementById('myDiv01').innerHTML = '<br>';
+        if (myIn1 === 'Gurshan') {
+            document.getElementById('myDiv01').innerHTML = 'Hi Gurshan';
+        }
+    "><br>
+    
+    <!-- Button 2: If-else condition -->
+    <input type="button" value="Is Gurshan else" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        document.getElementById('myDiv01').innerHTML = '<br>';
+        if (myIn1 === 'Gurshan') {
+            document.getElementById('myDiv01').innerHTML = 'Hi Gurshan';
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'Was expecting Gurshan :(';
+        }
+    "><br>
+
+    <!-- Button 3: AND condition -->
+    <input type="button" value="Check Gurshan AND" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        let myNum = document.getElementById('myNum1').value;
+        if (myIn1 === 'Gurshan' && myNum == 14) {
+            document.getElementById('myDiv01').innerHTML = 'Gurshan and 14 are correct';
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'Either Gurshan or 14 is incorrect';
+        }
+    "><br>
+
+    <!-- Button 4: OR condition -->
+    <input type="button" value="Check Gurshan OR" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        let myNum = document.getElementById('myNum1').value;
+        if (myIn1 === 'Gurshan' || myNum == 14) {
+            document.getElementById('myDiv01').innerHTML = 'Either Gurshan or 14 is correct';
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'Neither Gurshan nor 14 is correct';
+        }
+    "><br>
+
+    <!-- Button 5: NOT condition -->
+    <input type="button" value="Check NOT Gurshan" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        if (!(myIn1 === 'Gurshan')) {
+            document.getElementById('myDiv01').innerHTML = 'This is not Gurshan!';
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'This is indeed Gurshan!';
+        }
+    "><br>
+
+    <!-- Button 6: Complex AND-OR condition -->
+    <input type="button" value="Check Gurshan AND OR" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        let myNum = document.getElementById('myNum1').value;
+        if ((myIn1 === 'Gurshan' && myNum == 14) || myIn1 === 'Gurshan') {
+            document.getElementById('myDiv01').innerHTML = 'Complex condition: Gurshan and/or 14 is correct';
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'Neither condition is true';
+        }
+    "><br>
+
+    <!-- Button 7: Nested conditions -->
+    <input type="button" value="Nested Condition" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        let myNum = document.getElementById('myNum1').value;
+        if (myIn1 === 'Gurshan') {
+            if (myNum == 14) {
+                document.getElementById('myDiv01').innerHTML = 'Nested: Gurshan and 14';
+            } else {
+                document.getElementById('myDiv01').innerHTML = 'Gurshan, but not 14';
+            }
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'Not Gurshan';
+        }
+    "><br>
+
+    <!-- Button 8: Combined conditions with NOT -->
+    <input type="button" value="Check NOT AND OR" onclick="
+        let myIn1 = document.getElementById('myText1').value;
+        let myNum = document.getElementById('myNum1').value;
+        if (!(myIn1 === 'Gurshan') && myNum != 14) {
+            document.getElementById('myDiv01').innerHTML = 'Neither Gurshan nor 14 is correct (NOT AND)';
+        } else if (myIn1 === 'Gurshan' || myNum == 14) {
+            document.getElementById('myDiv01').innerHTML = 'Either Gurshan or 14 is correct (OR)';
+        }
+    "><br>
+</body>
+</html>

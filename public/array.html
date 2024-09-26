@@ -1,0 +1,31 @@
+<h1 align=center>tia11-arrays-gurshan.html</h1>
+
+<script>
+// Set a few Global Variables
+let myMax = 8;
+let myArray = new Array(myMax);
+</script>
+
+Input: <input type=text id="myFirstName" value="gurshan"><br>
+
+<input type=button value="Set Array" onclick="{
+    myArray[0] = 'Gurshan';
+    myArray[1] = 'Mary';
+    myArray[2] = 'Peter';
+    myArray[3] = 'Susan';
+    myArray[4] = 'John';
+    myArray[5] = 'Alice';
+    myArray[6] = 'Bob';
+    myArray[7] = 'Eve';
+
+    document.getElementById('myDiv01').innerHTML = 'You set the array';
+}"><br>
+
+<input type=button value="Show Array" onclick="{
+    document.getElementById('myDiv01').innerHTML = '';
+    for (myLoop=0; myLoop < 8; myLoop++){
+        document.getElementById('myDiv01').innerHTML += 'myArray[' + myLoop + '] = ' + myArray[myLoop] + '<br>';
+    }
+}"><br>
+
+<div id="myDiv01">...</div>

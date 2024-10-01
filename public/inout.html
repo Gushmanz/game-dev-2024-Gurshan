@@ -1,7 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Input Values</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #f0e130, #1dd1a1, #5f27cd);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #000;
+        }
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 300px;
+        }
+        input[type="button"] {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="button"]:hover {
+            background-color: #ff4757;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            text-shadow: 1px 1px #000;
+        }
+    </style>
 </head>
 <body>
     <h1>All In</h1>
@@ -42,7 +90,7 @@
     ">
     <p id="displayAddress"></p>
     
-    <input type="text" id="mycity" value="misson">
+    <input type="text" id="mycity" value="Mission">
     <input type="button" value="Show City" onclick="
         document.getElementById('displayCity').innerHTML = 'Your city is ' + document.getElementById('mycity').value;
     ">
@@ -62,3 +110,4 @@
 
 </body>
 </html>
+

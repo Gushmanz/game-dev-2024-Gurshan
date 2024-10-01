@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decision Making with Buttons</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
         body {
             font-family: 'Creepster', cursive;
             background-color: #000;
@@ -52,11 +53,38 @@
             border: 2px solid #ff0000;
             border-radius: 5px;
         }
+        .glow {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>ta09-decision-if-gurshan.html</h1>
+    <h1 class="glow">ta09-decision-if-gurshan.html</h1>
     
     Input:<input type="text" id="myText1" value="Gurshan">
     Input:<input type="number" id="myNum1" value="14">
@@ -149,6 +177,4 @@
         } else if (myIn1 === 'Gurshan' || myNum == 14) {
             document.getElementById('myDiv01').innerHTML = 'Either Gurshan or 14 is correct (OR)';
         }
-    "><br>
-</body>
-</html>
+    "><

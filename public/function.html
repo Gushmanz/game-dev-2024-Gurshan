@@ -3,51 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Elements Example</title>
+    <title>Cool HTML Elements with Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input[type="button"], input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .output {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e7f3e7;
+            border: 1px solid #c8e6c9;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Anchor Tag -->
-    <a href="https://www.example.com">Visit Example</a>
+    <h2>Cool HTML Elements with Functions</h2>
 
-    <!-- Image Tag -->
-    <img src="image.jpg" alt="Description of image">
-
-    <!-- Form Tag -->
-    <form action="/submit" method="post">
-        <input type="text" name="username" placeholder="Enter your username">
-        <input type="submit" value="Submit">
-    </form>
-
-    <!-- Table Tag -->
-    <table>
-        <tr>
-            <th>Header 1</th>
-            <th>Header 2</th>
-        </tr>
-        <tr>
-            <td>Data 1</td>
-            <td>Data 2</td>
-        </tr>
-    </table>
-
-    <!-- Division Tag -->
-    <div>
-        <p>This is a section.</p>
+    <div class="container">
+        <h4>1. Change Text Color</h4>
+        <p id="textColor">This text will change color.</p>
+        <input type="button" value="Change Color" onclick="document.getElementById('textColor').style.color = 'blue';">
     </div>
 
-    <!-- Span Tag -->
-    <p>This is a <span style="color: red;">red</span> word.</p>
+    <div class="container">
+        <h4>2. Show/Hide Element</h4>
+        <p id="toggleText">This text can be hidden or shown.</p>
+        <input type="button" value="Toggle Text" onclick="{
+            let text = document.getElementById('toggleText');
+            text.style.display = text.style.display === 'none' ? 'block' : 'none';
+        }">
+    </div>
 
-    <!-- Unordered List Tag -->
-    <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-    </ul>
+    <div class="container">
+        <h4>3. Change Image Source</h4>
+        <img id="image" src="image1.jpg" alt="Image 1" width="200">
+        <input type="button" value="Change Image" onclick="document.getElementById('image').src = 'image2.jpg';">
+    </div>
 
-    <!-- Ordered List Tag -->
-    <ol>
-        <li>First item</li>
-        <li>Second item</li>
-    </ol>
+    <div class="container">
+        <h4>4. Display Current Date and Time</h4>
+        <p id="dateTime">Click the button to display the current date and time.</p>
+        <input type="button" value="Show Date and Time" onclick="document.getElementById('dateTime').innerHTML = new Date();">
+    </div>
+
+    <div class="container">
+        <h4>5. Change Background Color</h4>
+        <input type="button" value="Change Background" onclick="document.body.style.backgroundColor = '#d3d3d3';">
+    </div>
+
+    <div class="container">
+        <h4>6. Calculate Sum</h4>
+        <input id="num1" type="number" placeholder="Number 1">
+        <input id="num2" type="number" placeholder="Number 2">
+        <input type="button" value="Calculate Sum" onclick="{
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            document.getElementById('sumResult').innerHTML = 'Sum: ' + (num1 + num2);
+        }">
+        <p id="sumResult" class="output"></p>
+    </div>
+
+    <div class="container">
+        <h4>7. Change Font Size</h4>
+        <p id="fontSizeText">This text will change size.</p>
+        <input type="button" value="Increase Font Size" onclick="document.getElementById('fontSizeText').style.fontSize = '24px';">
+    </div>
+
+    <div class="container">
+        <h4>8. Display Random Number</h4>
+        <p id="randomNumber">Click the button to display a random number.</p>
+        <input type="button" value="Show Random Number" onclick="document.getElementById('randomNumber').innerHTML = 'Random Number: ' + Math.floor(Math.random() * 100);">
+    </div>
 </body>
 </html>

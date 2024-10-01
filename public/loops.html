@@ -1,28 +1,167 @@
-<h2 align=center>tia@loops-by-Fred.html</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loop Examples</title>
+</head>
+<body>
+    <h2 align="center">JavaScript Loop Examples</h2>
 
-<a href="">Good reference to Javascript Loops</a><br>
+    <h4>Example input output code</h4>
 
-<h4>Example input output code</h4>
+    <h4>Example working code</h4>
 
-<pre></pre>
+    <!-- Basic For Loop with Decisions -->
+    Max loops: <input id="myNum01" type="number" value="4"><br>
+    <input type="button" value="Basic For loop with Decisions" onclick="{
+        document.getElementById('myDiv01').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum01').value);
 
-<h4>Example working code</h4>
-
-Max loops: <input id="myNum01" type=number value="4"><br>
-
-<input type=button value="Basic For loop with Decisions" onclick="{
-    document.getElementById('myDiv01').innerHTML = '';
-    let myTemp = '';
-    let myMax = parseInt(document.getElementById('myNum01').value);
-
-    for (let myLoop = 0; myLoop < myMax; myLoop++ ){
-        if (myLoop * 2 > myMax){
-            myTemp += ' cool ';
+        for (let myLoop = 0; myLoop < myMax; myLoop++ ){
+            if (myLoop * 2 > myMax){
+                myTemp += ' cool ';
+            }
+            myTemp += ' Loop number: ' + myLoop + '<br>';
         }
-        myTemp += ' Loop number: ' + myLoop + '<br>';
-    }
 
-    document.getElementById('myDiv01').innerHTML = myTemp
-}">
+        document.getElementById('myDiv01').innerHTML = myTemp;
+    }">
+    <div id="myDiv01">...</div>
 
-<div id="myDiv01">...</div>
+    <!-- Basic While Loop -->
+    Max loops: <input id="myNum02" type="number" value="4"><br>
+    <input type="button" value="Basic While Loop" onclick="{
+        document.getElementById('myDiv02').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum02').value);
+        let myLoop = 0;
+
+        while (myLoop < myMax) {
+            myTemp += ' Loop number: ' + myLoop + '<br>';
+            myLoop++;
+        }
+
+        document.getElementById('myDiv02').innerHTML = myTemp;
+    }">
+    <div id="myDiv02">...</div>
+
+    <!-- Do-While Loop -->
+    Max loops: <input id="myNum03" type="number" value="4"><br>
+    <input type="button" value="Do-While Loop" onclick="{
+        document.getElementById('myDiv03').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum03').value);
+        let myLoop = 0;
+
+        do {
+            myTemp += ' Loop number: ' + myLoop + '<br>';
+            myLoop++;
+        } while (myLoop < myMax);
+
+        document.getElementById('myDiv03').innerHTML = myTemp;
+    }">
+    <div id="myDiv03">...</div>
+
+    <!-- For Loop with Break -->
+    Max loops: <input id="myNum04" type="number" value="4"><br>
+    <input type="button" value="For Loop with Break" onclick="{
+        document.getElementById('myDiv04').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum04').value);
+
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            if (myLoop === 2) break;
+            myTemp += ' Loop number: ' + myLoop + '<br>';
+        }
+
+        document.getElementById('myDiv04').innerHTML = myTemp;
+    }">
+    <div id="myDiv04">...</div>
+
+    <!-- For Loop with Continue -->
+    Max loops: <input id="myNum05" type="number" value="4"><br>
+    <input type="button" value="For Loop with Continue" onclick="{
+        document.getElementById('myDiv05').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum05').value);
+
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            if (myLoop === 2) continue;
+            myTemp += ' Loop number: ' + myLoop + '<br>';
+        }
+
+        document.getElementById('myDiv05').innerHTML = myTemp;
+    }">
+    <div id="myDiv05">...</div>
+
+    <!-- Nested For Loop -->
+    Max loops: <input id="myNum06" type="number" value="4"><br>
+    <input type="button" value="Nested For Loop" onclick="{
+        document.getElementById('myDiv06').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum06').value);
+
+        for (let i = 0; i < myMax; i++) {
+            for (let j = 0; j < myMax; j++) {
+                myTemp += ' Loop i: ' + i + ', Loop j: ' + j + '<br>';
+            }
+        }
+
+        document.getElementById('myDiv06').innerHTML = myTemp;
+    }">
+    <div id="myDiv06">...</div>
+
+    <!-- For Loop with Array -->
+    Max loops: <input id="myNum07" type="number" value="4"><br>
+    <input type="button" value="For Loop with Array" onclick="{
+        document.getElementById('myDiv07').innerHTML = '';
+        let myTemp = '';
+        let myArray = ['apple', 'banana', 'cherry', 'date'];
+        let myMax = parseInt(document.getElementById('myNum07').value);
+
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            myTemp += ' Fruit: ' + myArray[myLoop] + '<br>';
+        }
+
+        document.getElementById('myDiv07').innerHTML = myTemp;
+    }">
+    <div id="myDiv07">...</div>
+
+    <!-- For Loop with Function Call -->
+    Max loops: <input id="myNum08" type="number" value="4"><br>
+    <input type="button" value="For Loop with Function Call" onclick="{
+        document.getElementById('myDiv08').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum08').value);
+
+        function doubleNumber(num) {
+            return num * 2;
+        }
+
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            myTemp += ' Double of ' + myLoop + ' is ' + doubleNumber(myLoop) + '<br>';
+        }
+
+        document.getElementById('myDiv08').innerHTML = myTemp;
+    }">
+    <div id="myDiv08">...</div>
+
+    <!-- For Loop with Random Numbers -->
+    Max loops: <input id="myNum09" type="number" value="4"><br>
+    <input type="button" value="For Loop with Random Numbers" onclick="{
+        document.getElementById('myDiv09').innerHTML = '';
+        let myTemp = '';
+        let myMax = parseInt(document.getElementById('myNum09').value);
+
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            let randomNum = Math.floor(Math.random() * 100);
+            myTemp += ' Random number: ' + randomNum + '<br>';
+        }
+
+        document.getElementById('myDiv09').innerHTML = myTemp;
+    }">
+    <div id="myDiv09">...</div>
+</body>
+</html>

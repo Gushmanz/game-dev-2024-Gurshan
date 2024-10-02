@@ -50,62 +50,50 @@
             text-shadow: 1px 1px #000;
         }
     </style>
+    <script>
+        function showValue(inputId, displayId, label) {
+            const inputValue = document.getElementById(inputId).value;
+            document.getElementById(displayId).innerHTML = `${label} ${inputValue}`;
+        }
+    </script>
 </head>
 <body>
     <h1>All In</h1>
     
     <input type="text" id="myfirstname" value="Gush">
-    <input type="button" value="Show First Name" onclick="
-        document.getElementById('displayFirstname').innerHTML = 'Your first name is ' + document.getElementById('myfirstname').value;
-    ">
+    <input type="button" value="Show First Name" onclick="showValue('myfirstname', 'displayFirstname', 'Your first name is')">
     <p id="displayFirstname"></p>
     
     <input type="text" id="mylastname" value="Cheema">
-    <input type="button" value="Show Last Name" onclick="
-        document.getElementById('displayLastname').innerHTML = 'Your last name is ' + document.getElementById('mylastname').value;
-    ">
+    <input type="button" value="Show Last Name" onclick="showValue('mylastname', 'displayLastname', 'Your last name is')">
     <p id="displayLastname"></p>
     
     <input type="number" id="myage" value="17">
-    <input type="button" value="Show Age" onclick="
-        document.getElementById('displayAge').innerHTML = 'Your age is ' + document.getElementById('myage').value;
-    ">
+    <input type="button" value="Show Age" onclick="showValue('myage', 'displayAge', 'Your age is')">
     <p id="displayAge"></p>
     
     <input type="email" id="myemail" value="example@example.com">
-    <input type="button" value="Show Email" onclick="
-        document.getElementById('displayEmail').innerHTML = 'Your email is ' + document.getElementById('myemail').value;
-    ">
+    <input type="button" value="Show Email" onclick="showValue('myemail', 'displayEmail', 'Your email is')">
     <p id="displayEmail"></p>
     
     <input type="tel" id="myphone" value="123-456-7890">
-    <input type="button" value="Show Phone Number" onclick="
-        document.getElementById('displayPhone').innerHTML = 'Your phone number is ' + document.getElementById('myphone').value;
-    ">
+    <input type="button" value="Show Phone Number" onclick="showValue('myphone', 'displayPhone', 'Your phone number is')">
     <p id="displayPhone"></p>
     
     <input type="text" id="myaddress" value="123 Main St">
-    <input type="button" value="Show Address" onclick="
-        document.getElementById('displayAddress').innerHTML = 'Your address is ' + document.getElementById('myaddress').value;
-    ">
+    <input type="button" value="Show Address" onclick="showValue('myaddress', 'displayAddress', 'Your address is')">
     <p id="displayAddress"></p>
     
     <input type="text" id="mycity" value="Mission">
-    <input type="button" value="Show City" onclick="
-        document.getElementById('displayCity').innerHTML = 'Your city is ' + document.getElementById('mycity').value;
-    ">
+    <input type="button" value="Show City" onclick="showValue('mycity', 'displayCity', 'Your city is')">
     <p id="displayCity"></p>
     
     <input type="text" id="mycountry" value="Canada">
-    <input type="button" value="Show Country" onclick="
-        document.getElementById('displayCountry').innerHTML = 'Your country is ' + document.getElementById('mycountry').value;
-    ">
+    <input type="button" value="Show Country" onclick="showValue('mycountry', 'displayCountry', 'Your country is')">
     <p id="displayCountry"></p>
     
     <input type="text" id="mycolor" value="silver">
-    <input type="button" value="Show Favorite Color" onclick="
-        document.getElementById('displayColor').innerHTML = 'Your favorite color is ' + document.getElementById('mycolor').value;
-    ">
+    <input type="button" value="Show Favorite Color" onclick="showValue('mycolor', 'displayColor', 'Your favorite color is')">
     <p id="displayColor"></p>
 
 </body>

@@ -34,12 +34,17 @@
         .form-container input[type="text"],
         .form-container input[type="email"],
         .form-container input[type="number"],
+        .form-container input[type="file"],
         .form-container textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+        .form-container input[type="radio"],
+        .form-container input[type="checkbox"] {
+            margin-right: 10px;
         }
         .form-container input[type="submit"] {
             width: 100%;
@@ -89,6 +94,20 @@
             
             <label for="comments">Additional Comments</label>
             <textarea id="comments" name="comments" rows="4"></textarea>
+            
+            <label for="newsletter">Subscribe to our newsletter?</label>
+            <input type="checkbox" id="newsletter" name="newsletter">
+            
+            <label for="gender">Gender</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            
+            <label for="file">Upload a file</label>
+            <input type="file" id="file" name="file">
+            
+            <input type="hidden" name="form_type" value="survey">
             
             <input type="submit" value="Submit">
         </form>

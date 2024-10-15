@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h2 {
+      color: #333;
+    }
+    .example {
+      margin-bottom: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Examples of Objects/Structs in JavaScript</h1>
+
+<!-- Example 1: Simple Book Object -->
+<div class="example">
+  <h2>1. Simple Book Object</h2>
+  <p id="bookInfo"></p>
+</div>
+
+<!-- Example 2: Person Object with Method -->
+<div class="example">
+  <h2>2. Person Object with Method</h2>
+  <p id="personInfo"></p>
+</div>
+
+<!-- Example 3: Car Object with Nested Objects -->
+<div class="example">
+  <h2>3. Car Object with Nested Objects</h2>
+  <p id="carInfo"></p>
+</div>
+
+<!-- Example 4: Movie Object Array -->
+<div class="example">
+  <h2>4. Movie Object Array</h2>
+  <p id="movieInfo"></p>
+</div>
+
+<!-- Example 5: Product Object with Discounts -->
+<div class="example">
+  <h2>5. Product Object with Discounts</h2>
+  <p id="productInfo"></p>
+</div>
+
+<!-- Example 6: Student Object Array with Methods -->
+<div class="example">
+  <h2>6. Student Object Array with Methods</h2>
+  <p id="studentInfo"></p>
+</div>
+
+<!-- Example 7: Animal Object with Behaviors -->
+<div class="example">
+  <h2>7. Animal Object with Behaviors</h2>
+  <p id="animalInfo"></p>
+</div>
+
+<!-- Example 8: City Object with Nested Objects and Arrays -->
+<div class="example">
+  <h2>8. City Object with Nested Objects and Arrays</h2>
+  <p id="cityInfo"></p>
+</div>
+
+<script>
+// Example 1: Simple Book Object
+let book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  year: 1925
+};
+document.getElementById("bookInfo").innerHTML =
+  "Title: " + book.title + "<br>Author: " + book.author + "<br>Year: " + book.year;
+
+// Example 2: Person Object with Method
+let person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+document.getElementById("personInfo").innerHTML = person.fullName();
+
+// Example 3: Car Object with Nested Objects
+let car = {
+  make: "Tesla",
+  model: "Model S",
+  year: 2022,
+  features: {
+    autopilot: true,
+    range: "396 miles"
+  }
+};
+document.getElementById("carInfo").innerHTML =
+  "Make: " + car.make + "<br>Model: " + car.model + "<br>Autopilot: " + car.features.autopilot + "<br>Range: " + car.features.range;
+
+// Example 4: Movie Object Array
+let movies = [
+  { title: "Inception", director: "Christopher Nolan", year: 2010 },
+  { title: "The Matrix", director: "The Wachowskis", year: 1999 }
+];
+let movieList = "";
+movies.forEach(function(movie) {
+  movieList += "Title: " + movie.title + "<br>Director: " + movie.director + "<br>Year: " + movie.year + "<br><br>";
+});
+document.getElementById("movieInfo").innerHTML = movieList;
+
+// Example 5: Product Object with Discounts
+let product = {
+  name: "Laptop",
+  price: 999.99,
+  discount: function() {
+    return this.price * 0.9;
+  }
+};
+document.getElementById("productInfo").innerHTML =
+  "Product: " + product.name + "<br>Price: $" + product.price + "<br>Discounted Price: $" + product.discount();
+
+// Example 6: Student Object Array with Methods
+let students = [
+  { name: "Alice", grade: 90 },
+  { name: "Bob", grade: 85 }
+];
+let studentInfo = students.map(function(student) {
+  return student.name + " scored " + student.grade;
+}).join("<br>");
+document.getElementById("studentInfo").innerHTML = studentInfo;
+
+// Example 7: Animal Object with Behaviors
+let animal = {
+  species: "Dog",
+  breed: "Golden Retriever",
+  bark: function() {
+    return "Woof!";
+  }
+};
+document.getElementById("animalInfo").innerHTML =
+  "Species: " + animal.species + "<br>Breed: " + animal.breed + "<br>Sound: " + animal.bark();
+
+// Example 8: City Object with Nested Objects and Arrays
+let city = {
+  name: "San Francisco",
+  population: 883305,
+  landmarks: ["Golden Gate Bridge", "Alcatraz Island"],
+  mayor: {
+    firstName: "London",
+    lastName: "Breed"
+  }
+};
+document.getElementById("cityInfo").innerHTML =
+  "City: " + city.name + "<br>Population: " + city.population + "<br>Landmarks: " + city.landmarks.join(", ") +
+  "<br>Mayor: " + city.mayor.firstName + " " + city.mayor.lastName;
+</script>
+
+</body>
+</html>

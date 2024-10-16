@@ -1,126 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Objects and Arrays Examples</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    section {
-      margin-bottom: 20px;
     }
     h2 {
       color: #333;
     }
-    ul {
-      list-style-type: none;
-      padding: 0;
+    .example {
+      margin-bottom: 20px;
     }
-    li {
-      padding: 5px;
-      border-bottom: 1px solid #ccc;
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Cool Examples of Objects and Arrays</h1>
 
-  <!-- Example 1: Dynamic To-Do List -->
-  <section>
-    <h2>1. Dynamic To-Do List</h2>
-    <ul id="todo-list"></ul>
-    <script>
-      let tasks = [{ task: "Learn JS", completed: false }, { task: "Workout", completed: true }];
-      tasks.forEach(task => {
-        document.getElementById('todo-list').innerHTML += `<li>${task.task} - ${task.completed ? 'Done' : 'Pending'}</li>`;
-      });
-    </script>
-  </section>
+<h1>Examples of Objects/Structs in JavaScript</h1>
 
-  <!-- Example 2: Product Inventory -->
-  <section>
-    <h2>2. Product Inventory</h2>
-    <ul id="product-list"></ul>
-    <script>
-      let products = [{ name: "Laptop", price: 1200 }, { name: "Phone", price: 800 }];
-      products.forEach(product => {
-        document.getElementById('product-list').innerHTML += `<li>${product.name}: $${product.price}</li>`;
-      });
-    </script>
-  </section>
+<!-- Example 1: Simple Book Object -->
+<div class="example">
+  <h2>1. Simple Book Object</h2>
+  <p id="bookInfo"></p>
+</div>
 
-  <!-- Example 3: Nested Arrays (Matrix) -->
-  <section>
-    <h2>3. Nested Arrays (Matrix)</h2>
-    <ul id="matrix-list"></ul>
-    <script>
-      let matrix = [[1, 2], [3, 4]];
-      matrix.forEach(row => {
-        document.getElementById('matrix-list').innerHTML += `<li>${row.join(', ')}</li>`;
-      });
-    </script>
-  </section>
+<!-- Example 2: Person Object with Method -->
+<div class="example">
+  <h2>2. Person Object with Method</h2>
+  <p id="personInfo"></p>
+</div>
 
-  <!-- Example 4: Random Quote Generator -->
-  <section>
-    <h2>4. Random Quote Generator</h2>
-    <p id="quote"></p>
-    <script>
-      let quotes = [{ text: "Life is beautiful", author: "Unknown" }, { text: "Code is poetry", author: "WP" }];
-      let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote').innerHTML = `${randomQuote.text} - ${randomQuote.author}`;
-    </script>
-  </section>
+<!-- Example 3: Car Object with Nested Objects -->
+<div class="example">
+  <h2>3. Car Object with Nested Objects</h2>
+  <p id="carInfo"></p>
+</div>
 
-  <!-- Example 5: Shopping Cart -->
-  <section>
-    <h2>5. Shopping Cart</h2>
-    <ul id="cart-list"></ul>
-    <script>
-      let cart = [{ name: "Apple", price: 1.2 }, { name: "Banana", price: 0.8 }];
-      cart.forEach(item => {
-        document.getElementById('cart-list').innerHTML += `<li>${item.name}: $${item.price}</li>`;
-      });
-    </script>
-  </section>
+<!-- Example 4: Movie Object Array -->
+<div class="example">
+  <h2>4. Movie Object Array</h2>
+  <p id="movieInfo"></p>
+</div>
 
-  <!-- Example 6: Student Grades Tracker -->
-  <section>
-    <h2>6. Student Grades Tracker</h2>
-    <ul id="grades-list"></ul>
-    <script>
-      let students = [{ name: "John", grade: 85 }, { name: "Jane", grade: 92 }];
-      students.forEach(student => {
-        document.getElementById('grades-list').innerHTML += `<li>${student.name}: ${student.grade}%</li>`;
-      });
-    </script>
-  </section>
+<!-- Example 5: Product Object with Discounts -->
+<div class="example">
+  <h2>5. Product Object with Discounts</h2>
+  <p id="productInfo"></p>
+</div>
 
-  <!-- Example 7: Car Inventory -->
-  <section>
-    <h2>7. Car Dealership Inventory</h2>
-    <ul id="car-list"></ul>
-    <script>
-      let cars = [{ make: "Toyota", model: "Camry", year: 2020 }, { make: "Ford", model: "Mustang", year: 2019 }];
-      cars.forEach(car => {
-        document.getElementById('car-list').innerHTML += `<li>${car.make} ${car.model} (${car.year})</li>`;
-      });
-    </script>
-  </section>
+<!-- Example 6: Student Object Array with Methods -->
+<div class="example">
+  <h2>6. Student Object Array with Methods</h2>
+  <p id="studentInfo"></p>
+</div>
 
-  <!-- Example 8: Favorite Movies -->
-  <section>
-    <h2>8. Favorite Movies List</h2>
-    <ul id="movies-list"></ul>
-    <script>
-      let movies = [{ title: "Inception", year: 2010 }, { title: "The Matrix", year: 1999 }];
-      movies.forEach(movie => {
-        document.getElementById('movies-list').innerHTML += `<li>${movie.title} (${movie.year})</li>`;
-      });
-    </script>
-  </section>
+<!-- Example 7: Animal Object with Behaviors -->
+<div class="example">
+  <h2>7. Animal Object with Behaviors</h2>
+  <p id="animalInfo"></p>
+</div>
+
+<!-- Example 8: City Object with Nested Objects and Arrays -->
+<div class="example">
+  <h2>8. City Object with Nested Objects and Arrays</h2>
+  <p id="cityInfo"></p>
+</div>
+
+<script>
+// Example 1: Simple Book Object
+let book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  year: 1925
+};
+document.getElementById("bookInfo").innerHTML =
+  "Title: " + book.title + "<br>Author: " + book.author + "<br>Year: " + book.year;
+
+// Example 2: Person Object with Method
+let person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+document.getElementById("personInfo").innerHTML = person.fullName();
+
+// Example 3: Car Object with Nested Objects
+let car = {
+  make: "Tesla",
+  model: "Model S",
+  year: 2022,
+  features: {
+    autopilot: true,
+    range: "396 miles"
+  }
+};
+document.getElementById("carInfo").innerHTML =
+  "Make: " + car.make + "<br>Model: " + car.model + "<br>Autopilot: " + car.features.autopilot + "<br>Range: " + car.features.range;
+
+// Example 4: Movie Object Array
+let movies = [
+  { title: "Inception", director: "Christopher Nolan", year: 2010 },
+  { title: "The Matrix", director: "The Wachowskis", year: 1999 }
+];
+let movieList = "";
+movies.forEach(function(movie) {
+  movieList += "Title: " + movie.title + "<br>Director: " + movie.director + "<br>Year: " + movie.year + "<br><br>";
+});
+document.getElementById("movieInfo").innerHTML = movieList;
+
+// Example 5: Product Object with Discounts
+let product = {
+  name: "Laptop",
+  price: 999.99,
+  discount: function() {
+    return this.price * 0.9;
+  }
+};
+document.getElementById("productInfo").innerHTML =
+  "Product: " + product.name + "<br>Price: $" + product.price + "<br>Discounted Price: $" + product.discount();
+
+// Example 6: Student Object Array with Methods
+let students = [
+  { name: "Alice", grade: 90 },
+  { name: "Bob", grade: 85 }
+];
+let studentInfo = students.map(function(student) {
+  return student.name + " scored " + student.grade;
+}).join("<br>");
+document.getElementById("studentInfo").innerHTML = studentInfo;
+
+// Example 7: Animal Object with Behaviors
+let animal = {
+  species: "Dog",
+  breed: "Golden Retriever",
+  bark: function() {
+    return "Woof!";
+  }
+};
+document.getElementById("animalInfo").innerHTML =
+  "Species: " + animal.species + "<br>Breed: " + animal.breed + "<br>Sound: " + animal.bark();
+
+// Example 8: City Object with Nested Objects and Arrays
+let city = {
+  name: "San Francisco",
+  population: 883305,
+  landmarks: ["Golden Gate Bridge", "Alcatraz Island"],
+  mayor: {
+    firstName: "London",
+    lastName: "Breed"
+  }
+};
+document.getElementById("cityInfo").innerHTML =
+  "City: " + city.name + "<br>Population: " + city.population + "<br>Landmarks: " + city.landmarks.join(", ") +
+  "<br>Mayor: " + city.mayor.firstName + " " + city.mayor.lastName;
+</script>
+
 </body>
 </html>

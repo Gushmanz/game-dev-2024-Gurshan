@@ -1,31 +1,144 @@
-<h1 align=center>tia11-arrays-gurshan.html</h1>
-
-<script>
-// Set a few Global Variables
-let myMax = 8;
-let myArray = new Array(myMax);
-</script>
-
-Input: <input type=text id="myFirstName" value="gurshan"><br>
-
-<input type=button value="Set Array" onclick="{
-    myArray = 'Anna';
-    myArray = 'Brian';
-    myArray = 'Charlie';
-    myArray = 'Diana';
-    myArray = 'Edward';
-    myArray = 'Fiona';
-    myArray = 'George';
-    myArray = 'Hannah';
-
-    document.getElementById('myDiv01').innerHTML = 'You set the array';
-}"><br>
-
-<input type=button value="Show Array" onclick="{
-    document.getElementById('myDiv01').innerHTML = '';
-    for (myLoop=0; myLoop < 8; myLoop++){
-        document.getElementById('myDiv01').innerHTML += 'myArray[' + myLoop + '] = ' + myArray[myLoop] + '<br>';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Examples in HTML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-}"><br>
+    h2 {
+      color: #333;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+    input {
+      padding: 5px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cool Array Examples</h1>
 
-<div id="myDiv01">...</div>
+  <!-- Example 1: Basic Array -->
+  <section>
+    <h2>1. Displaying an Array of Numbers</h2>
+    <p>Numbers: <span id="numbers-array"></span></p>
+    <script>
+      const numbers = [1, 2, 3, 4, 5];
+      document.getElementById("numbers-array").textContent = numbers.join(', ');
+    </script>
+  </section>
+
+  <!-- Example 2: Loop Through an Array -->
+  <section>
+    <h2>2. Loop Through an Array of Fruits</h2>
+    <ul id="fruits-list"></ul>
+    <script>
+      const fruits = ["Apple", "Banana", "Cherry", "Date"];
+      fruits.forEach(fruit => {
+        document.getElementById('fruits-list').innerHTML += `<li>${fruit}</li>`;
+      });
+    </script>
+  </section>
+
+  <!-- Example 3: Sorting an Array -->
+  <section>
+    <h2>3. Sorting an Array of Names</h2>
+    <ul id="names-list"></ul>
+    <script>
+      let names = ["Zara", "Mike", "Emma", "Liam"];
+      names.sort();
+      names.forEach(name => {
+        document.getElementById('names-list').innerHTML += `<li>${name}</li>`;
+      });
+    </script>
+  </section>
+
+  <!-- Example 4: Filter an Array -->
+  <section>
+    <h2>4. Filtering an Array (Even Numbers)</h2>
+    <p>Even Numbers: <span id="even-numbers"></span></p>
+    <script>
+      let nums = [10, 15, 20, 25, 30];
+      let evenNums = nums.filter(num => num % 2 === 0);
+      document.getElementById("even-numbers").textContent = evenNums.join(', ');
+    </script>
+  </section>
+
+  <!-- Example 5: Array of Objects -->
+  <section>
+    <h2>5. Displaying an Array of People (Objects)</h2>
+    <ul id="people-list"></ul>
+    <script>
+      let people = [
+        { name: "John", age: 28 },
+        { name: "Sarah", age: 24 },
+        { name: "Mark", age: 32 }
+      ];
+      people.forEach(person => {
+        document.getElementById('people-list').innerHTML += `<li>${person.name}, Age: ${person.age}</li>`;
+      });
+    </script>
+  </section>
+
+  <!-- Example 6: Map an Array to Double Numbers -->
+  <section>
+    <h2>6. Doubling Numbers in an Array</h2>
+    <p>Doubled Numbers: <span id="doubled-numbers"></span></p>
+    <script>
+      let originalNumbers = [2, 4, 6, 8];
+      let doubledNumbers = originalNumbers.map(num => num * 2);
+      document.getElementById("doubled-numbers").textContent = doubledNumbers.join(', ');
+    </script>
+  </section>
+
+  <!-- Example 7: Combining Two Arrays -->
+  <section>
+    <h2>7. Combining Two Arrays of Colors</h2>
+    <p>Combined Colors: <span id="combined-colors"></span></p>
+    <script>
+      let colors1 = ["Red", "Blue"];
+      let colors2 = ["Green", "Yellow"];
+      let allColors = colors1.concat(colors2);
+      document.getElementById("combined-colors").textContent = allColors.join(', ');
+    </script>
+  </section>
+
+  <!-- Example 8: Add Items to an Array (Push Method) -->
+  <section>
+    <h2>8. Add New Task to To-Do List</h2>
+    <input type="text" id="new-task" placeholder="New task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="task-list"></ul>
+    <script>
+      let tasks = ["Clean the house", "Do laundry"];
+      function renderTasks() {
+        document.getElementById("task-list").innerHTML = "";
+        tasks.forEach(task => {
+          document.getElementById("task-list").innerHTML += `<li>${task}</li>`;
+        });
+      }
+      function addTask() {
+        const taskInput = document.getElementById("new-task").value;
+        if (taskInput) {
+          tasks.push(taskInput);
+          renderTasks();
+          document.getElementById("new-task").value = "";
+        }
+      }
+      renderTasks();
+    </script>
+  </section>
+
+</body>
+</html>

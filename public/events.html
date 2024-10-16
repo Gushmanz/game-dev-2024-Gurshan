@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Event Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Event Examples in HTML</h1>
+
+  <!-- Example 1: Click Event -->
+  <section>
+    <h2>1. Button Click Event</h2>
+    <button onclick="buttonClick()">Click Me!</button>
+    <p id="click-result"></p>
+    <script>
+      function buttonClick() {
+        document.getElementById("click-result").textContent = "Button Clicked!";
+      }
+    </script>
+  </section>
+
+  <!-- Example 2: Mouse Over Event -->
+  <section>
+    <h2>2. Mouse Over Event</h2>
+    <div class="box" onmouseover="mouseOver()" onmouseout="mouseOut()"></div>
+    <p id="hover-result"></p>
+    <script>
+      function mouseOver() {
+        document.getElementById("hover-result").textContent = "Mouse is over the box!";
+      }
+      function mouseOut() {
+        document.getElementById("hover-result").textContent = "Mouse left the box!";
+      }
+    </script>
+  </section>
+
+  <!-- Example 3: Key Press Event -->
+  <section>
+    <h2>3. Key Press Event</h2>
+    <input type="text" id="keypress-input" onkeypress="keyPressEvent(event)" placeholder="Type something">
+    <p id="keypress-result"></p>
+    <script>
+      function keyPressEvent(e) {
+        document.getElementById("keypress-result").textContent = `Key Pressed: ${e.key}`;
+      }
+    </script>
+  </section>
+
+  <!-- Example 4: Change Event -->
+  <section>
+    <h2>4. Input Change Event</h2>
+    <input type="text" id="change-input" onchange="changeEvent()">
+    <p id="change-result"></p>
+    <script>
+      function changeEvent() {
+        const inputVal = document.getElementById("change-input").value;
+        document.getElementById("change-result").textContent = `Input changed to: ${inputVal}`;
+      }
+    </script>
+  </section>
+
+  <!-- Example 5: Submit Event -->
+  <section>
+    <h2>5. Form Submit Event</h2>
+    <form onsubmit="submitEvent(event)">
+      <input type="text" placeholder="Enter name" id="name-input" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="submit-result"></p>
+    <script>
+      function submitEvent(e) {
+        e.preventDefault();
+        const name = document.getElementById("name-input").value;
+        document.getElementById("submit-result").textContent = `Form submitted with name: ${name}`;
+      }
+    </script>
+  </section>
+
+  <!-- Example 6: Double Click Event -->
+  <section>
+    <h2>6. Double Click Event</h2>
+    <button ondblclick="doubleClick()">Double Click Me!</button>
+    <p id="dblclick-result"></p>
+    <script>
+      function doubleClick() {
+        document.getElementById("dblclick-result").textContent = "Button Double Clicked!";
+      }
+    </script>
+  </section>
+
+  <!-- Example 7: Window Resize Event -->
+  <section>
+    <h2>7. Window Resize Event</h2>
+    <p id="resize-result"></p>
+    <script>
+      window.onresize = function() {
+        document.getElementById("resize-result").textContent = `Window resized to: ${window.innerWidth} x ${window.innerHeight}`;
+      }
+    </script>
+  </section>
+
+  <!-- Example 8: Context Menu Event -->
+  <section>
+    <h2>8. Context Menu (Right Click) Event</h2>
+    <div class="box" oncontextmenu="contextMenuEvent(event)"></div>
+    <p id="contextmenu-result"></p>
+    <script>
+      function contextMenuEvent(e) {
+        e.preventDefault();
+        document.getElementById("contextmenu-result").textContent = "Right-click detected!";
+      }
+    </script>
+  </section>
+
+</body>
+</html>

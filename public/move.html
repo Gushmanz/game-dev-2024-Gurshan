@@ -1,0 +1,22 @@
+<script>
+//global variables
+  let myclock02
+</script>
+
+input type=button id="myButton02" value="image Right" onclock="{
+document.getElementById('myImage01').style.left =
+parseInt(docment.getElementById('myImage01').style.left) + 10 + 'px'
+}"><br><br>
+
+<input type=button value="Auto Move Riight" onclick="{
+  document.getElementById('myImage01').style.left = 0
+  claerInterval(myClock02)
+  myClock02 = setinterval(function(){
+     document.getElementById('mybutton02').click()
+  }, 30)   // activate click evey 30 ms (millieseconds)
+
+  }"><br><br>
+
+
+  <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px;
+    left:0px;" src="myImage01.jpg">

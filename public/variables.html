@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Variable Examples in HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        .variable-box {
+            background-color: #e6e6fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .important {
+            color: #ff4500;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cool Variable Examples</h1>
+
+    <!-- 1. Simple Text Variable -->
+    <div class="variable-box" id="simple-text">
+        <p><strong>Simple Text:</strong> <span id="text-var">Hello, World!</span></p>
+    </div>
+
+    <!-- 2. Number Variable -->
+    <div class="variable-box" id="number-example">
+        <p><strong>Number:</strong> <span id="num-var">42</span></p>
+    </div>
+
+    <!-- 3. Boolean Variable -->
+    <div class="variable-box" id="boolean-example">
+        <p><strong>Is JavaScript Awesome?</strong> <span id="bool-var" class="important">true</span></p>
+    </div>
+
+    <!-- 4. Array Variable (List of Favorite Movies) -->
+    <div class="variable-box" id="array-example">
+        <p><strong>Favorite Movies:</strong> <span id="movies-var"></span></p>
+    </div>
+
+    <!-- 5. Object Variable (Car Details) -->
+    <div class="variable-box" id="object-example">
+        <p><strong>Car Details:</strong></p>
+        <p>Make: <span id="car-make"></span></p>
+        <p>Model: <span id="car-model"></span></p>
+        <p>Year: <span id="car-year"></span></p>
+    </div>
+
+    <!-- 6. Date Variable -->
+    <div class="variable-box" id="date-example">
+        <p><strong>Today's Date:</strong> <span id="date-var"></span></p>
+    </div>
+
+    <!-- 7. Math Calculation Variable -->
+    <div class="variable-box" id="math-example">
+        <p><strong>Math Calculation:</strong> <span id="calc-var"></span></p>
+    </div>
+
+    <!-- 8. Color Variable (Using RGB) -->
+    <div class="variable-box" id="color-example">
+        <p><strong>Favorite Color (RGB):</strong> <span id="color-var"></span></p>
+    </div>
+
+    <script>
+        // 1. Simple Text Variable
+        const greeting = "Hello, World!";
+        document.getElementById("text-var").textContent = greeting;
+
+        // 2. Number Variable
+        const luckyNumber = 42;
+        document.getElementById("num-var").textContent = luckyNumber;
+
+        // 3. Boolean Variable
+        const isJavaScriptAwesome = true;
+        document.getElementById("bool-var").textContent = isJavaScriptAwesome;
+
+        // 4. Array Variable (Favorite Movies)
+        const favoriteMovies = ["Inception", "The Matrix", "Interstellar"];
+        document.getElementById("movies-var").textContent = favoriteMovies.join(", ");
+
+        // 5. Object Variable (Car Details)
+        const car = {
+            make: "Tesla",
+            model: "Model S",
+            year: 2022
+        };
+        document.getElementById("car-make").textContent = car.make;
+        document.getElementById("car-model").textContent = car.model;
+        document.getElementById("car-year").textContent = car.year;
+
+        // 6. Date Variable
+        const today = new Date().toLocaleDateString();
+        document.getElementById("date-var").textContent = today;
+
+        // 7. Math Calculation Variable
+        const result = (5 * 10) + 7;
+        document.getElementById("calc-var").textContent = result;
+
+        // 8. Color Variable (RGB)
+        const favoriteColor = "rgb(255, 165, 0)"; // Orange
+        document.getElementById("color-var").textContent = favoriteColor;
+        document.getElementById("color-var").style.color = favoriteColor;
+    </script>
+
+</body>
+</html>

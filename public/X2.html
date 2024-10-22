@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Cool HTML Features</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Canvas API -->
+    <section>
+        <h2>1. Canvas API</h2>
+        <canvas id="myCanvas" width="200" height="200"></canvas>
+        <script>
+            const canvas = document.getElementById('myCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(10, 10, 150, 100); // Draw a red rectangle
+        </script>
+    </section>
+
+    <!-- 2. SVG Graphics -->
+    <section>
+        <h2>2. SVG Graphics</h2>
+        <svg width="100" height="100">
+            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="blue" />
+        </svg>
+    </section>
+
+    <!-- 3. Custom Data Attributes -->
+    <section>
+        <h2>3. Custom Data Attributes</h2>
+        <button data-product-id="1234" onclick="alert('Product ID: ' + this.dataset.productId)">Buy Now</button>
+    </section>
+
+    <!-- 4. Audio Embeds -->
+    <section>
+        <h2>4. Audio Embed</h2>
+        <audio controls>
+            <source src="audio.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+
+    <!-- 5. Video Embeds -->
+    <section>
+        <h2>5. Video Embed</h2>
+        <video width="320" height="240" controls>
+            <source src="movie.mp4" type="video/mp4">
+            Your browser does not support the video element.
+        </video>
+    </section>
+
+    <!-- 6. LocalStorage -->
+    <section>
+        <h2>6. LocalStorage API</h2>
+        <button onclick="saveToLocalStorage()">Save Data to LocalStorage</button>
+        <button onclick="getFromLocalStorage()">Get Data from LocalStorage</button>
+        <script>
+            function saveToLocalStorage() {
+                localStorage.setItem('name', 'Code Copilot');
+                alert('Data saved to LocalStorage!');
+            }
+            function getFromLocalStorage() {
+                alert('Stored Name: ' + localStorage.getItem('name'));
+            }
+        </script>
+    </section>
+
+    <!-- 7. Geolocation API -->
+    <section>
+        <h2>7. Geolocation API</h2>
+        <button onclick="getLocation()">Get Current Location</button>
+        <p id="location"></p>
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    document.getElementById('location').innerText = 'Geolocation is not supported by this browser.';
+                }
+            }
+
+            function showPosition(position) {
+                document.getElementById('location').innerText = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+            }
+        </script>
+    </section>
+
+    <!-- 8. Drag and Drop API -->
+    <section>
+        <h2>8. Drag and Drop API</h2>
+        <div id="dragContainer" style="border:1px solid #000; width:100px; height:100px; display:flex; align-items:center; justify-content:center;">
+            <img id="dragImage" src="https://via.placeholder.com/50" draggable="true" />
+        </div>
+        <script>
+            const dragImage = document.getElementById('dragImage');
+            const dragContainer = document.getElementById('dragContainer');
+
+            dragImage.addEventListener('dragstart', function (e) {
+                e.dataTransfer.setData('text', 'image');
+            });
+
+            dragContainer.addEventListener('dragover', function (e) {
+                e.preventDefault();
+            });
+
+            dragContainer.addEventListener('drop', function (e) {
+                e.preventDefault();
+                alert('Image dropped!');
+            });
+        </script>
+    </section>
+
+</body>
+</html>

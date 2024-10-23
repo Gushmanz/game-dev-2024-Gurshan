@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Glowing Button</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+
+    .glow-button {
+      font-size: 24px;
+      padding: 15px 40px;
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(0, 191, 255, 0.3), 0 0 40px rgba(30, 144, 255, 0.5);
+      transition: 0.3s ease-in-out;
+    }
+
+    .glow-button:hover {
+      color: #0ff;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(0, 191, 255, 0.5), 0 0 80px rgba(30, 144, 255, 1);
+      transform: scale(1.1);
+    }
+
+    .glow-button:active {
+      transform: scale(1);
+      box-shadow: none;
+    }
+
+    @keyframes rainbow {
+      0% { color: red; }
+      25% { color: yellow; }
+      50% { color: green; }
+      75% { color: blue; }
+      100% { color: red; }
+    }
+
+    .glow-text {
+      animation: rainbow 3s infinite;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1 class="glow-text">SUPER COOL BUTTON!</h1>
+    <button class="glow-button" onclick="alert('Button clicked! 🎉')">Click Me!</button>
+  </div>
+
+  <script>
+    // You can add more JavaScript here for more interactions!
+  </script>
+</body>
+</html>

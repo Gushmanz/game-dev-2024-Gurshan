@@ -1,3 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>My Portfolio</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Hi, I'm <span class="highlight">John Doe</span></h2>
+        <p>A Creative Web Developer</p>
+        <a href="#projects" class="cta-btn">See My Work</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate web developer specializing in creating stylish and responsive websites.</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300" alt="Project 1">
+            <h3>Project 1</h3>
+        </div>
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300" alt="Project 2">
+            <h3>Project 2</h3>
+        </div>
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300" alt="Project 3">
+            <h3>Project 3</h3>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to get in touch for collaborations or just to say hi!</p>
+        <a href="mailto:someone@example.com" class="cta-btn">Contact Me</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 John Doe | All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
 * {
     margin: 0;
     padding: 0;
@@ -117,3 +178,31 @@ footer {
     background-color: #333;
     color: #fff;
 }
+
+// Optional: Add a simple scroll animation
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollElements = document.querySelectorAll(".project-card");
+
+    const elementInView = (el, dividend = 1) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
+    };
+
+    const displayScrollElement = (element) => {
+        element.classList.add("scrolled");
+    };
+
+    const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+                displayScrollElement(el);
+            }
+        });
+    };
+
+    window.addEventListener("scroll", () => {
+        handleScrollAnimation();
+    });
+});

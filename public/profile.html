@@ -4,11 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .highlight {
+            color: #f1c40f;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            background-color: #f1c40f;
+            color: #333;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cta-btn:hover {
+            background-color: #e67e22;
+            color: #fff;
+        }
+
+        /* About, projects, and contact sections */
+        .about, .projects, .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .about h2, .projects h2, .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .projects .project-card {
+            display: inline-block;
+            width: 300px;
+            margin: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .projects .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .projects .project-card img {
+            width: 100%;
+            border-bottom: 2px solid #f1c40f;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav>
             <h1>My Portfolio</h1>
@@ -20,17 +144,20 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h2>Hi, I'm <span class="highlight">John Doe</span></h2>
         <p>A Creative Web Developer</p>
         <a href="#projects" class="cta-btn">See My Work</a>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="about">
         <h2>About Me</h2>
         <p>I'm a passionate web developer specializing in creating stylish and responsive websites.</p>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="projects">
         <h2>My Projects</h2>
         <div class="project-card">
@@ -47,162 +174,46 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Me</h2>
         <p>Feel free to get in touch for collaborations or just to say hi!</p>
         <a href="mailto:someone@example.com" class="cta-btn">Contact Me</a>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 John Doe | All rights reserved.</p>
     </footer>
+
+    <script>
+        // Optional: Add a simple scroll animation
+        document.addEventListener("DOMContentLoaded", () => {
+            const scrollElements = document.querySelectorAll(".project-card");
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add("scrolled");
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", () => {
+                handleScrollAnimation();
+            });
+        });
+    </script>
 </body>
 </html>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-}
-
-nav h1 {
-    font-size: 1.8rem;
-}
-
-nav ul {
-    display: flex;
-    gap: 1.5rem;
-}
-
-nav ul li a {
-    text-decoration: none;
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
-}
-
-.hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #3498db, #8e44ad);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-}
-
-.hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero .highlight {
-    color: #f1c40f;
-}
-
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.cta-btn {
-    background-color: #f1c40f;
-    color: #333;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s ease-in-out;
-}
-
-.cta-btn:hover {
-    background-color: #e67e22;
-    color: #fff;
-}
-
-.about, .projects, .contact {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.about h2, .projects h2, .contact h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.projects .project-card {
-    display: inline-block;
-    width: 300px;
-    margin: 1rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.projects .project-card:hover {
-    transform: translateY(-10px);
-}
-
-.projects .project-card img {
-    width: 100%;
-    border-bottom: 2px solid #f1c40f;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
-}
-
-// Optional: Add a simple scroll animation
-document.addEventListener("DOMContentLoaded", () => {
-    const scrollElements = document.querySelectorAll(".project-card");
-
-    const elementInView = (el, dividend = 1) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (
-            elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-    };
-
-    const displayScrollElement = (element) => {
-        element.classList.add("scrolled");
-    };
-
-    const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-            if (elementInView(el, 1.25)) {
-                displayScrollElement(el);
-            }
-        });
-    };
-
-    window.addEventListener("scroll", () => {
-        handleScrollAnimation();
-    });
-});

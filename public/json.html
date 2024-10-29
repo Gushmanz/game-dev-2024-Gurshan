@@ -1,34 +1,121 @@
-<h1 align=center>tla13-json-fred.html</h1>
-
-<script>
-function myShowJSON(myIn){
-    document.getElementById('myDiv1').innerHTML = 'Sent: ' + myIn
+{
+  "examples": {
+    "recipe": {
+      "recipeName": "Chocolate Chip Cookies",
+      "ingredients": [
+        { "name": "flour", "amount": "2 cups" },
+        { "name": "sugar", "amount": "1 cup" },
+        { "name": "butter", "amount": "1/2 cup" },
+        { "name": "chocolate chips", "amount": "1 cup" },
+        { "name": "vanilla extract", "amount": "1 tsp" }
+      ],
+      "instructions": [
+        "Preheat oven to 350°F (175°C).",
+        "Mix flour, sugar, and butter.",
+        "Add chocolate chips and vanilla extract.",
+        "Scoop onto baking sheet.",
+        "Bake for 10-12 minutes."
+      ],
+      "servings": 4
+    },
+    "movie": {
+      "title": "Inception",
+      "director": "Christopher Nolan",
+      "releaseYear": 2010,
+      "genres": ["Sci-Fi", "Action", "Adventure"],
+      "cast": [
+        { "actor": "Leonardo DiCaprio", "role": "Dom Cobb" },
+        { "actor": "Joseph Gordon-Levitt", "role": "Arthur" },
+        { "actor": "Ellen Page", "role": "Ariadne" }
+      ],
+      "rating": 8.8,
+      "availableOn": ["Netflix", "Amazon Prime"]
+    },
+    "weatherReport": {
+      "location": "New York",
+      "date": "2024-10-29",
+      "temperature": {
+        "morning": 55,
+        "afternoon": 65,
+        "evening": 60
+      },
+      "forecast": [
+        { "time": "morning", "condition": "cloudy" },
+        { "time": "afternoon", "condition": "sunny" },
+        { "time": "evening", "condition": "clear" }
+      ],
+      "humidity": 60,
+      "windSpeed": 10
+    },
+    "library": {
+      "libraryName": "City Library",
+      "location": "Downtown",
+      "books": [
+        {
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "genre": "Fiction",
+          "available": true
+        },
+        {
+          "title": "1984",
+          "author": "George Orwell",
+          "genre": "Dystopian",
+          "available": false
+        },
+        {
+          "title": "Moby Dick",
+          "author": "Herman Melville",
+          "genre": "Adventure",
+          "available": true
+        }
+      ],
+      "librarians": [
+        { "name": "Alice", "experience": 5 },
+        { "name": "Bob", "experience": 10 }
+      ]
+    },
+    "socialMediaPost": {
+      "postId": "a1b2c3d4",
+      "user": {
+        "username": "cool_dude123",
+        "profilePic": "https://example.com/profile.jpg"
+      },
+      "content": "Had an amazing day at the beach!",
+      "likes": 245,
+      "comments": [
+        { "username": "beach_lover", "comment": "Looks fun!" },
+        { "username": "sunny_days", "comment": "Wish I was there!" }
+      ],
+      "postedOn": "2024-10-29T14:32:00Z"
+    },
+    "videoGameCharacter": {
+      "characterName": "Arthas",
+      "game": "World of Warcraft",
+      "class": "Paladin",
+      "level": 60,
+      "abilities": [
+        { "name": "Holy Light", "type": "heal", "power": 120 },
+        { "name": "Divine Shield", "type": "protection", "duration": 10 },
+        { "name": "Judgment", "type": "attack", "power": 80 }
+      ],
+      "equipment": {
+        "weapon": "Frostmourne",
+        "armor": "Plate of the Damned",
+        "accessory": "Lich King's Crown"
+      }
+    },
+    "musicPlaylist": {
+      "playlistName": "Chill Vibes",
+      "createdBy": "user1234",
+      "dateCreated": "2024-10-25",
+      "songs": [
+        { "title": "Night Owl", "artist": "Gerry Rafferty", "duration": "3:34" },
+        { "title": "Dreams", "artist": "Fleetwood Mac", "duration": "4:14" },
+        { "title": "Electric Feel", "artist": "MGMT", "duration": "3:50" }
+      ]
+    }
+  }
 }
 
-async function fetchData() {
-    const response = await fetch('https://dog.ceo/api/breeds/image/random');
-    const data = await response.json();
-    console.log(data);
-    console.log('data.status: ${data.status}');
-    const myJson = await JSON.stringify(data, null, 2);
-    document.getElementById('myDiv1').innerHTML = myJson
-}
-</script>
-
-Explanation of JSON compared to javascript objects formatted for this textarea.<br>
-
-<textarea cols=70 ROWS=5>
-</textarea><br><br>
-
-Enter a json returning URL: <input type=text id="myText1" value="https://randomfox.ca/floof/">
-<input type=button value="show JSON" onclick="{fetchData()}"><br><br>
-
-<select size=1 onchange="myShowJSON(this.value)">
-    <option value="https://randomfox.ca/floof/">randomfox</option>
-    <option value="https://dog.ceo/api/breeds/image/random">dog.ceo</option>
-</select><br><br>
-
-You make the select box JSON show up in the DIV, and include many more URL's in the select box<br><br>
-
-<div id="myDiv1">...</div>
 

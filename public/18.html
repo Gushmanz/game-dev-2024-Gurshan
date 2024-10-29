@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tla18-extend-class-examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #444;
+            background-color: #d1d1d1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .example-box {
+            border: 2px solid #444;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 300px;
+            background-color: #fff;
+        }
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 align=center>tla18-extend-class-by-fred.html</h2>
+
+<div id="result">...</div>
+
+<!-- Example 1: Basic Animal Class and Dog Extension -->
+<div class="example-box">
+    <h3>Example 1: Dog Class</h3>
+    <script>
+        class Animal {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            showInfo(){
+                document.getElementById('result').innerHTML = `Hello, I am a ${this.name} and I am ${this.age} years old.<br>`;
+            }
+        }
+
+        class Dog extends Animal {
+            showInfo(){
+                document.getElementById('result').innerHTML = `${this.name} is a loyal dog, aged ${this.age}.<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Dog" onclick="{
+        let myDog = new Dog('Buddy', 4);
+        myDog.showInfo();
+    }">
+</div>
+
+<!-- Example 2: Cat with Unique Trait -->
+<div class="example-box">
+    <h3>Example 2: Cat Class</h3>
+    <script>
+        class Cat extends Animal {
+            showInfo(){
+                document.getElementById('result').innerHTML = `${this.name} is a curious cat, aged ${this.age}.<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Cat" onclick="{
+        let myCat = new Cat('Whiskers', 2);
+        myCat.showInfo();
+    }">
+</div>
+
+<!-- Example 3: Bird with Flight Ability -->
+<div class="example-box">
+    <h3>Example 3: Bird Class</h3>
+    <script>
+        class Bird extends Animal {
+            fly(){
+                document.getElementById('result').innerHTML = `${this.name} spreads its wings and flies high!<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Bird" onclick="{
+        let myBird = new Bird('Sky', 1);
+        myBird.fly();
+    }">
+</div>
+
+<!-- Example 4: Fish with Swim Ability -->
+<div class="example-box">
+    <h3>Example 4: Fish Class</h3>
+    <script>
+        class Fish extends Animal {
+            swim(){
+                document.getElementById('result').innerHTML = `${this.name} is swimming gracefully in the water.<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Fish" onclick="{
+        let myFish = new Fish('Nemo', 3);
+        myFish.swim();
+    }">
+</div>
+
+<!-- Example 5: Horse with Gallop Ability -->
+<div class="example-box">
+    <h3>Example 5: Horse Class</h3>
+    <script>
+        class Horse extends Animal {
+            gallop(){
+                document.getElementById('result').innerHTML = `${this.name} is galloping across the field!<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Horse" onclick="{
+        let myHorse = new Horse('Spirit', 5);
+        myHorse.gallop();
+    }">
+</div>
+
+<!-- Example 6: Rabbit with Jump Ability -->
+<div class="example-box">
+    <h3>Example 6: Rabbit Class</h3>
+    <script>
+        class Rabbit extends Animal {
+            jump(){
+                document.getElementById('result').innerHTML = `${this.name} is hopping around happily!<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Rabbit" onclick="{
+        let myRabbit = new Rabbit('Thumper', 1);
+        myRabbit.jump();
+    }">
+</div>
+
+<!-- Example 7: Elephant with Special Trunk Greeting -->
+<div class="example-box">
+    <h3>Example 7: Elephant Class</h3>
+    <script>
+        class Elephant extends Animal {
+            greet(){
+                document.getElementById('result').innerHTML = `${this.name} greets you with a trunk wave!<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Elephant" onclick="{
+        let myElephant = new Elephant('Dumbo', 10);
+        myElephant.greet();
+    }">
+</div>
+
+<!-- Example 8: Parrot with Ability to Talk -->
+<div class="example-box">
+    <h3>Example 8: Parrot Class</h3>
+    <script>
+        class Parrot extends Animal {
+            talk(){
+                document.getElementById('result').innerHTML = `${this.name} says, "Polly wants a cracker!"<br>`;
+            }
+        }
+    </script>
+    <input type="button" value="Create Parrot" onclick="{
+        let myParrot = new Parrot('Polly', 3);
+        myParrot.talk();
+    }">
+</div>
+
+</body>
+</html>

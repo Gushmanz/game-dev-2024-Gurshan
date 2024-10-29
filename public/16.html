@@ -1,37 +1,115 @@
-<h1 align=center>tla16-multi-d-array-fred.html</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tla16-multi-d-array-variations</title>
+</head>
+<body>
 
+<h1 align=center>tla16-multi-d-array-variations.html</h1>
+
+<!-- Example 1: Basic Manual Array with Summation -->
+<h2>Example 1: Manual Array with Summation</h2>
 <script>
-    // set a few Global Variables
-    let myMax = 3
-    let myArrayManual = new Array(myMax)
-    let myArrayAuto = new Array(myMax)
+    let arraySum = 0;
+    let sumArray = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 </script>
-
-Input:<input type=text id="myFirstName" value="fred"><br>
-
-<input type=button value="Set Manual Array" onclick="{
-    myArrayManual = [ [3,4,2], [1,2,3], [5,6,7] ]
-    document.getElementById('myDiv01').innerHTML = 'You set the array'
+<input type=button value="Calculate Array Sum" onclick="{
+    arraySum = sumArray.flat().reduce((a, b) => a + b, 0);
+    document.getElementById('result01').innerHTML = 'Array Sum: ' + arraySum;
 }">
+<div id="result01">...</div>
 
-<input type=button value="Show Manual Array" onclick="{
-    document.getElementById('myDiv01').innerHTML = ''
-    console.log(myArrayManual)
-    for (myLoop0=0; myLoop0 < myMax; myLoop0++){
-        for (myLoop1=0; myLoop1 < myMax; myLoop1++){
-            document.getElementById('myDiv01').innerHTML += 
-            myArrayManual[myLoop0][myLoop1] = ${myArrayManual[myLoop0][myLoop1]} <br>
-        }
-    }
+<hr>
+
+<!-- Example 2: Random Matrix Generator -->
+<h2>Example 2: Random 3x3 Matrix</h2>
+<script>
+    let randomMatrix = Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => Math.floor(Math.random() * 10)));
+</script>
+<input type=button value="Generate Random Matrix" onclick="{
+    document.getElementById('result02').innerHTML = randomMatrix.map(row => row.join(' ')).join('<br>');
 }">
+<div id="result02">...</div>
 
-<input type=button value="Set Auto Array" onclick="{
-    myArrayAuto[0,0] = Math.floor(Math.random() * 100)
-    document.getElementById('myDiv01').innerHTML = myArrayAuto[0,0]
+<hr>
+
+<!-- Example 3: Multiplication Table Array -->
+<h2>Example 3: Multiplication Table (3x3)</h2>
+<script>
+    let multTable = Array.from({ length: 3 }, (_, i) => Array.from({ length: 3 }, (_, j) => (i + 1) * (j + 1)));
+</script>
+<input type=button value="Show Multiplication Table" onclick="{
+    document.getElementById('result03').innerHTML = multTable.map(row => row.join(' ')).join('<br>');
 }">
+<div id="result03">...</div>
 
-<input type=button value="Show Auto Array" onclick="{
-    document.getElementById('myDiv01').innerHTML += ' You print it out'
-}"><br>
+<hr>
 
-<div id="myDiv01">...</div>
+<!-- Example 4: String Array with User Input -->
+<h2>Example 4: String Array Input</h2>
+<script>
+    let stringArray = Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => ""));
+</script>
+<input type=text id="stringInput" placeholder="Enter a word"><br>
+<input type=button value="Add to Array" onclick="{
+    let inputVal = document.getElementById('stringInput').value;
+    let i = Math.floor(Math.random() * 3);
+    let j = Math.floor(Math.random() * 3);
+    stringArray[i][j] = inputVal;
+    document.getElementById('result04').innerHTML = stringArray.map(row => row.join(' ')).join('<br>');
+}">
+<div id="result04">...</div>
+
+<hr>
+
+<!-- Example 5: 2D Color Grid -->
+<h2>Example 5: Color Grid</h2>
+<script>
+    let colorGrid = Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => ""));
+    const colors = ["red", "green", "blue", "yellow", "purple"];
+</script>
+<input type=button value="Generate Color Grid" onclick="{
+    colorGrid = colorGrid.map(row => row.map(() => colors[Math.floor(Math.random() * colors.length)]));
+    document.getElementById('result05').innerHTML = colorGrid.map(row => `<div style='background-color: ${row[0]}; padding: 10px'>${row.join('</div><div style=\'background-color: ' + row[1] + '; padding: 10px\'>')}</div>`).join('<br>');
+}">
+<div id="result05">...</div>
+
+<hr>
+
+<!-- Example 6: Incrementing Array -->
+<h2>Example 6: Incremental Array Pattern</h2>
+<script>
+    let incArray = Array.from({ length: 3 }, (_, i) => Array.from({ length: 3 }, (_, j) => i * 3 + j + 1));
+</script>
+<input type=button value="Show Incremental Array" onclick="{
+    document.getElementById('result06').innerHTML = incArray.map(row => row.join(' ')).join('<br>');
+}">
+<div id="result06">...</div>
+
+<hr>
+
+<!-- Example 7: Coordinate System Array -->
+<h2>Example 7: Coordinate System</h2>
+<script>
+    let coordinates = Array.from({ length: 3 }, (_, i) => Array.from({ length: 3 }, (_, j) => `(${i},${j})`));
+</script>
+<input type=button value="Display Coordinates" onclick="{
+    document.getElementById('result07').innerHTML = coordinates.map(row => row.join(' ')).join('<br>');
+}">
+<div id="result07">...</div>
+
+<hr>
+
+<!-- Example 8: Randomized Temperature Data -->
+<h2>Example 8: Temperature Matrix (Celsius)</h2>
+<script>
+    let tempMatrix = Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => (Math.random() * 30).toFixed(1)));
+</script>
+<input type=button value="Generate Temperature Data" onclick="{
+    document.getElementById('result08').innerHTML = tempMatrix.map(row => row.join('°C ')).join('<br>');
+}">
+<div id="result08">...</div>
+
+</body>
+</html>

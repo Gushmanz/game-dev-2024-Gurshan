@@ -10,7 +10,7 @@
         }
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #0e0e1b;
+            background: linear-gradient(135deg, #1a1a2e, #0e0e1b);
             color: #ffffff;
             margin: 0;
             padding: 0;
@@ -20,20 +20,46 @@
             height: 100vh;
             overflow: hidden;
             text-align: center;
+            animation: gradient-animation 5s ease infinite;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .container {
-            background: rgba(30, 30, 30, 0.9);
+            background: rgba(30, 30, 30, 0.85);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             max-width: 800px;
             width: 100%;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 255, 204, 0.1);
+            border-radius: 20px;
+            z-index: 0;
+            animation: pulse 3s ease infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         h1, h2 {
             color: #00ffcc;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
         }
         .link-list {
             list-style-type: none;
@@ -41,10 +67,27 @@
         }
         .link-list li {
             margin: 15px 0;
+            transition: transform 0.3s ease, background 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .link-list li::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 255, 204, 0.2);
+            border-radius: 10px;
+            top: 0;
+            left: 0;
             transition: transform 0.3s ease;
+            z-index: -1;
         }
         .link-list li:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+        }
+        .link-list li:hover::after {
+            transform: scale(1.1);
         }
         .link-list a {
             text-decoration: none;
@@ -55,7 +98,7 @@
         }
         .link-list a:hover {
             color: #00cc99;
-            text-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
         }
     </style>
 </head>
@@ -93,5 +136,4 @@
     </div>
 </body>
 </html>
-
 

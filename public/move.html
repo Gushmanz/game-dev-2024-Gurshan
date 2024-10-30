@@ -1,24 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Mover</title>
+</head>
+<body>
+
 <script>
-  
-//global variables
-  let myClock02
-  
+    // global variables
+    let myClock02;
+
+    function moveRight() {
+        const img = document.getElementById('myImage01');
+        img.style.left = parseInt(img.style.left) + 10 + 'px';
+    }
+    
+    function autoMoveRight() {
+        const img = document.getElementById('myImage01');
+        img.style.left = '0px'; // Reset position
+        clearInterval(myClock02);
+        myClock02 = setInterval(moveRight, 30); // Activate move every 30 ms
+    }
 </script>
 
-<input type=button id="myButton02" value="image Right" onclick="{
-document.getElementById('myImage01').style.left =
-parseInt(docment.getElementById('myImage01').style.left) + 10 + 'px'
-}"><br><br>
+<input type="button" id="myButton02" value="Image Right" onclick="moveRight()"><br><br>
+<input type="button" value="Auto Move Right" onclick="autoMoveRight()"><br><br>
 
-<input type=button value="Auto Move Riight" onclick="{
-  document.getElementById('myImage01').style.left = 0
-  clearInterval(myClock02)
-  myClock02 = setinterval(function(){
-     document.getElementById('mybutton02').click()
-  }, 30)   // activate click evey 30 ms (millieseconds)
+<img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1200px-Sunflower_from_Silesia2.jpg">
 
-  }"><br><br>
+</body>
+</html>
 
-
-  <img id="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1200px-Sunflower_from_Silesia2.jpg" style="position:relative; width:100px; height:80px; top:0px;
-    left:0px;" src="myImage01.jpg">

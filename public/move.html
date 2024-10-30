@@ -15,6 +15,11 @@
         const img = document.getElementById('myImage01');
         img.style.left = parseInt(img.style.left) + 10 + 'px';
     }
+
+    function moveLeft() {
+        const img = document.getElementById('myImage01');
+        img.style.left = parseInt(img.style.left) - 10 + 'px';
+    }
     
     function autoMoveRight() {
         const img = document.getElementById('myImage01');
@@ -22,13 +27,23 @@
         clearInterval(myClock02);
         myClock02 = setInterval(moveRight, 30); // Activate move every 30 ms
     }
+
+    function autoMoveLeft() {
+        const img = document.getElementById('myImage01');
+        img.style.left = '0px'; // Reset position
+        clearInterval(myClock02);
+        myClock02 = setInterval(moveLeft, 30); // Activate move every 30 ms
+    }
 </script>
 
-<input type="button" id="myButton02" value="Image Right" onclick="moveRight()"><br><br>
-<input type="button" value="Auto Move Right" onclick="autoMoveRight()"><br><br>
+<input type="button" id="myButtonRight" value="Move Right" onclick="moveRight()">
+<input type="button" id="myButtonLeft" value="Move Left" onclick="moveLeft()"><br><br>
+<input type="button" value="Auto Move Right" onclick="autoMoveRight()">
+<input type="button" value="Auto Move Left" onclick="autoMoveLeft()"><br><br>
 
 <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1200px-Sunflower_from_Silesia2.jpg">
 
 </body>
 </html>
+
 

@@ -44,7 +44,14 @@
         }
         .form-container input[type="radio"],
         .form-container input[type="checkbox"] {
-            margin-right: 10px;
+            margin-right: 5px;
+        }
+        .form-container .gender-group,
+        .form-container .newsletter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         .form-container input[type="submit"] {
             width: 100%;
@@ -66,43 +73,55 @@
         <h2>Survey Form</h2>
         <form action="#" method="post">
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname" required>
+            <input type="text" id="fname" name="fname" placeholder="Your first name" required>
             
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname" required>
+            <input type="text" id="lname" name="lname" placeholder="Your last name" required>
             
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
             
             <label for="age">Age</label>
-            <input type="number" id="age" name="age" required>
+            <input type="number" id="age" name="age" placeholder="Your age" required>
             
             <label for="gender">Gender</label>
-            <input type="text" id="gender" name="gender" required>
+            <div class="gender-group">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
             
             <label for="country">Country</label>
-            <input type="text" id="country" name="country" required>
+            <input type="text" id="country" name="country" placeholder="Your country" required>
             
             <label for="feedback">Feedback</label>
-            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            <textarea id="feedback" name="feedback" rows="4" placeholder="Your feedback here..." required></textarea>
             
             <label for="rating">Rate our service (1-10)</label>
             <input type="number" id="rating" name="rating" min="1" max="10" required>
             
             <label for="recommend">Would you recommend us?</label>
-            <input type="text" id="recommend" name="recommend" required>
+            <div class="recommend-group">
+                <input type="radio" id="yes" name="recommend" value="yes" required>
+                <label for="yes">Yes</label>
+                
+                <input type="radio" id="no" name="recommend" value="no" required>
+                <label for="no">No</label>
+            </div>
             
             <label for="comments">Additional Comments</label>
-            <textarea id="comments" name="comments" rows="4"></textarea>
+            <textarea id="comments" name="comments" rows="4" placeholder="Any other thoughts?"></textarea>
             
             <label for="newsletter">Subscribe to our newsletter?</label>
-            <input type="checkbox" id="newsletter" name="newsletter">
-            
-            <label for="gender">Gender</label>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label>
+            <div class="newsletter-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Yes, sign me up!</label>
+            </div>
             
             <label for="file">Upload a file</label>
             <input type="file" id="file" name="file">
@@ -114,4 +133,3 @@
     </div>
 </body>
 </html>
-

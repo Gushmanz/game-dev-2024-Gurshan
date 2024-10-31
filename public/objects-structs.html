@@ -1,166 +1,141 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    h2 {
-      color: #333;
-    }
-    .example {
-      margin-bottom: 20px;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
+<!DOCTYPE html> 
 
-<h1>Examples of Objects/Structs in JavaScript</h1>
+<html lang="en"> 
 
-<!-- Example 1: Simple Book Object -->
-<div class="example">
-  <h2>1. Simple Book Object</h2>
-  <p id="bookInfo"></p>
-</div>
+<head> 
 
-<!-- Example 2: Person Object with Method -->
-<div class="example">
-  <h2>2. Person Object with Method</h2>
-  <p id="personInfo"></p>
-</div>
+    <meta charset="UTF-8"> 
 
-<!-- Example 3: Car Object with Nested Objects -->
-<div class="example">
-  <h2>3. Car Object with Nested Objects</h2>
-  <p id="carInfo"></p>
-</div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-<!-- Example 4: Movie Object Array -->
-<div class="example">
-  <h2>4. Movie Object Array</h2>
-  <p id="movieInfo"></p>
-</div>
+    <title>JavaScript Objects Display</title> 
 
-<!-- Example 5: Product Object with Discounts -->
-<div class="example">
-  <h2>5. Product Object with Discounts</h2>
-  <p id="productInfo"></p>
-</div>
+    <style> 
 
-<!-- Example 6: Student Object Array with Methods -->
-<div class="example">
-  <h2>6. Student Object Array with Methods</h2>
-  <p id="studentInfo"></p>
-</div>
+        body { 
 
-<!-- Example 7: Animal Object with Behaviors -->
-<div class="example">
-  <h2>7. Animal Object with Behaviors</h2>
-  <p id="animalInfo"></p>
-</div>
+            font-family: Arial, sans-serif; 
 
-<!-- Example 8: City Object with Nested Objects and Arrays -->
-<div class="example">
-  <h2>8. City Object with Nested Objects and Arrays</h2>
-  <p id="cityInfo"></p>
-</div>
+            margin: 20px; 
 
-<script>
-// Example 1: Simple Book Object
-let book = {
-  title: "The Great Gatsby",
-  author: "F. Scott Fitzgerald",
-  year: 1925
-};
-document.getElementById("bookInfo").innerHTML =
-  "Title: " + book.title + "<br>Author: " + book.author + "<br>Year: " + book.year;
+            background-color: #f4f4f9; 
 
-// Example 2: Person Object with Method
-let person = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 30,
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  }
-};
-document.getElementById("personInfo").innerHTML = person.fullName();
+        } 
 
-// Example 3: Car Object with Nested Objects
-let car = {
-  make: "Tesla",
-  model: "Model S",
-  year: 2022,
-  features: {
-    autopilot: true,
-    range: "396 miles"
-  }
-};
-document.getElementById("carInfo").innerHTML =
-  "Make: " + car.make + "<br>Model: " + car.model + "<br>Autopilot: " + car.features.autopilot + "<br>Range: " + car.features.range;
+        .object-container { 
 
-// Example 4: Movie Object Array
-let movies = [
-  { title: "Inception", director: "Christopher Nolan", year: 2010 },
-  { title: "The Matrix", director: "The Wachowskis", year: 1999 }
-];
-let movieList = "";
-movies.forEach(function(movie) {
-  movieList += "Title: " + movie.title + "<br>Director: " + movie.director + "<br>Year: " + movie.year + "<br><br>";
-});
-document.getElementById("movieInfo").innerHTML = movieList;
+            background-color: #fff; 
 
-// Example 5: Product Object with Discounts
-let product = {
-  name: "Laptop",
-  price: 999.99,
-  discount: function() {
-    return this.price * 0.9;
-  }
-};
-document.getElementById("productInfo").innerHTML =
-  "Product: " + product.name + "<br>Price: $" + product.price + "<br>Discounted Price: $" + product.discount();
+            border: 1px solid #ccc; 
 
-// Example 6: Student Object Array with Methods
-let students = [
-  { name: "Alice", grade: 90 },
-  { name: "Bob", grade: 85 }
-];
-let studentInfo = students.map(function(student) {
-  return student.name + " scored " + student.grade;
-}).join("<br>");
-document.getElementById("studentInfo").innerHTML = studentInfo;
+            border-radius: 8px; 
 
-// Example 7: Animal Object with Behaviors
-let animal = {
-  species: "Dog",
-  breed: "Golden Retriever",
-  bark: function() {
-    return "Woof!";
-  }
-};
-document.getElementById("animalInfo").innerHTML =
-  "Species: " + animal.species + "<br>Breed: " + animal.breed + "<br>Sound: " + animal.bark();
+            padding: 10px 15px; 
 
-// Example 8: City Object with Nested Objects and Arrays
-let city = {
-  name: "San Francisco",
-  population: 883305,
-  landmarks: ["Golden Gate Bridge", "Alcatraz Island"],
-  mayor: {
-    firstName: "London",
-    lastName: "Breed"
-  }
-};
-document.getElementById("cityInfo").innerHTML =
-  "City: " + city.name + "<br>Population: " + city.population + "<br>Landmarks: " + city.landmarks.join(", ") +
-  "<br>Mayor: " + city.mayor.firstName + " " + city.mayor.lastName;
-</script>
+            margin: 15px 0; 
 
-</body>
-</html>
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+
+        } 
+
+        .object-title { 
+
+            font-weight: bold; 
+
+            color: #333; 
+
+        } 
+
+        .object-property { 
+
+            color: #555; 
+
+            margin: 5px 0; 
+
+        } 
+
+    </style> 
+
+</head> 
+
+<body> 
+
+ 
+
+<h2>JavaScript Objects Examples</h2> 
+
+ 
+
+<button onclick="showObjects()">Show Objects</button> 
+
+ 
+
+<div id="objectsDisplay"></div> 
+
+ 
+
+<script> 
+
+    function showObjects() { 
+
+        let objects = [ 
+
+            { name: "Alice", age: 25, occupation: "Engineer", city: "New York", hobby: "Painting" }, 
+
+            { name: "Bob", age: 30, occupation: "Doctor", city: "Chicago", hobby: "Cycling" }, 
+
+            { name: "Charlie", age: 35, occupation: "Teacher", city: "San Francisco", hobby: "Hiking" }, 
+
+            { name: "Diana", age: 28, occupation: "Designer", city: "Los Angeles", hobby: "Photography" }, 
+
+            { name: "Edward", age: 45, occupation: "Chef", city: "Miami", hobby: "Cooking" }, 
+
+            { name: "Fiona", age: 23, occupation: "Musician", city: "Austin", hobby: "Guitar" }, 
+
+            { name: "George", age: 40, occupation: "Architect", city: "Seattle", hobby: "Reading" }, 
+
+            { name: "Hannah", age: 29, occupation: "Writer", city: "Denver", hobby: "Traveling" } 
+
+        ]; 
+
+ 
+
+        let display = document.getElementById("objectsDisplay"); 
+
+        display.innerHTML = ""; // Clear previous content 
+
+ 
+
+        objects.forEach((obj, index) => { 
+
+            display.innerHTML += ` 
+
+                <div class="object-container"> 
+
+                    <div class="object-title">Person ${index + 1}</div> 
+
+                    <div class="object-property"><strong>Name:</strong> ${obj.name}</div> 
+
+                    <div class="object-property"><strong>Age:</strong> ${obj.age}</div> 
+
+                    <div class="object-property"><strong>Occupation:</strong> ${obj.occupation}</div> 
+
+                    <div class="object-property"><strong>City:</strong> ${obj.city}</div> 
+
+                    <div class="object-property"><strong>Hobby:</strong> ${obj.hobby}</div> 
+
+                </div> 
+
+            `; 
+
+        }); 
+
+    } 
+
+</script> 
+
+ 
+
+</body> 
+
+</html> 

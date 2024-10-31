@@ -8,42 +8,89 @@
 <body>
 
 <script>
-    // global variables
+    // Global variable for the interval
     let myClock02;
 
     function moveRight() {
-        const img = document.getElementById('myImage01');
-        img.style.left = parseInt(img.style.left) + 10 + 'px';
+        const img1 = document.getElementById('myImage01');
+        const img2 = document.getElementById('myImage02');
+        img1.style.left = parseInt(img1.style.left) + 10 + 'px';
+        img2.style.left = parseInt(img2.style.left) + 10 + 'px';
     }
 
     function moveLeft() {
-        const img = document.getElementById('myImage01');
-        img.style.left = parseInt(img.style.left) - 10 + 'px';
+        const img1 = document.getElementById('myImage01');
+        const img2 = document.getElementById('myImage02');
+        img1.style.left = parseInt(img1.style.left) - 10 + 'px';
+        img2.style.left = parseInt(img2.style.left) - 10 + 'px';
     }
-    
+
+    function moveUp() {
+        const img1 = document.getElementById('myImage01');
+        const img2 = document.getElementById('myImage02');
+        img1.style.top = parseInt(img1.style.top) - 10 + 'px';
+        img2.style.top = parseInt(img2.style.top) - 10 + 'px';
+    }
+
+    function moveDown() {
+        const img1 = document.getElementById('myImage01');
+        const img2 = document.getElementById('myImage02');
+        img1.style.top = parseInt(img1.style.top) + 10 + 'px';
+        img2.style.top = parseInt(img2.style.top) + 10 + 'px';
+    }
+
     function autoMoveRight() {
-        const img = document.getElementById('myImage01');
-        img.style.left = '0px'; // Reset position
+        resetPositions();
         clearInterval(myClock02);
-        myClock02 = setInterval(moveRight, 30); // Activate move every 30 ms
+        myClock02 = setInterval(moveRight, 30);
     }
 
     function autoMoveLeft() {
-        const img = document.getElementById('myImage01');
-        img.style.left = '0px'; // Reset position
+        resetPositions();
         clearInterval(myClock02);
-        myClock02 = setInterval(moveLeft, 30); // Activate move every 30 ms
+        myClock02 = setInterval(moveLeft, 30);
+    }
+
+    function autoMoveUp() {
+        resetPositions();
+        clearInterval(myClock02);
+        myClock02 = setInterval(moveUp, 30);
+    }
+
+    function autoMoveDown() {
+        resetPositions();
+        clearInterval(myClock02);
+        myClock02 = setInterval(moveDown, 30);
+    }
+
+    function resetPositions() {
+        const img1 = document.getElementById('myImage01');
+        const img2 = document.getElementById('myImage02');
+        img1.style.left = '0px';
+        img1.style.top = '0px';
+        img2.style.left = '0px';
+        img2.style.top = '0px';
     }
 </script>
 
-<input type="button" id="myButtonRight" value="Move Right" onclick="moveRight()">
-<input type="button" id="myButtonLeft" value="Move Left" onclick="moveLeft()"><br><br>
-<input type="button" value="Auto Move Right" onclick="autoMoveRight()">
-<input type="button" value="Auto Move Left" onclick="autoMoveLeft()"><br><br>
+<!-- Control Buttons -->
+<input type="button" value="Move Right" onclick="moveRight()">
+<input type="button" value="Move Left" onclick="moveLeft()">
+<input type="button" value="Move Up" onclick="moveUp()">
+<input type="button" value="Move Down" onclick="moveDown()"><br><br>
 
-<img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1200px-Sunflower_from_Silesia2.jpg">
+<input type="button" value="Auto Move Right" onclick="autoMoveRight()">
+<input type="button" value="Auto Move Left" onclick="autoMoveLeft()">
+<input type="button" value="Auto Move Up" onclick="autoMoveUp()">
+<input type="button" value="Auto Move Down" onclick="autoMoveDown()"><br><br>
+
+<!-- Images -->
+<img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" 
+     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1200px-Sunflower_from_Silesia2.jpg">
+
+<img id="myImage02" style="position:relative; width:100px; height:80px; top:0px; left:0px; margin-left: 20px;" 
+     src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Nature_landscape.jpg/640px-Nature_landscape.jpg">
 
 </body>
 </html>
-
 

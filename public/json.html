@@ -1,121 +1,132 @@
-{
-  "examples": {
-    "recipe": {
-      "recipeName": "Chocolate Chip Cookies",
-      "ingredients": [
-        { "name": "flour", "amount": "2 cups" },
-        { "name": "sugar", "amount": "1 cup" },
-        { "name": "butter", "amount": "1/2 cup" },
-        { "name": "chocolate chips", "amount": "1 cup" },
-        { "name": "vanilla extract", "amount": "1 tsp" }
-      ],
-      "instructions": [
-        "Preheat oven to 350°F (175°C).",
-        "Mix flour, sugar, and butter.",
-        "Add chocolate chips and vanilla extract.",
-        "Scoop onto baking sheet.",
-        "Bake for 10-12 minutes."
-      ],
-      "servings": 4
-    },
-    "movie": {
-      "title": "Inception",
-      "director": "Christopher Nolan",
-      "releaseYear": 2010,
-      "genres": ["Sci-Fi", "Action", "Adventure"],
-      "cast": [
-        { "actor": "Leonardo DiCaprio", "role": "Dom Cobb" },
-        { "actor": "Joseph Gordon-Levitt", "role": "Arthur" },
-        { "actor": "Ellen Page", "role": "Ariadne" }
-      ],
-      "rating": 8.8,
-      "availableOn": ["Netflix", "Amazon Prime"]
-    },
-    "weatherReport": {
-      "location": "New York",
-      "date": "2024-10-29",
-      "temperature": {
-        "morning": 55,
-        "afternoon": 65,
-        "evening": 60
-      },
-      "forecast": [
-        { "time": "morning", "condition": "cloudy" },
-        { "time": "afternoon", "condition": "sunny" },
-        { "time": "evening", "condition": "clear" }
-      ],
-      "humidity": 60,
-      "windSpeed": 10
-    },
-    "library": {
-      "libraryName": "City Library",
-      "location": "Downtown",
-      "books": [
-        {
-          "title": "To Kill a Mockingbird",
-          "author": "Harper Lee",
-          "genre": "Fiction",
-          "available": true
-        },
-        {
-          "title": "1984",
-          "author": "George Orwell",
-          "genre": "Dystopian",
-          "available": false
-        },
-        {
-          "title": "Moby Dick",
-          "author": "Herman Melville",
-          "genre": "Adventure",
-          "available": true
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Fetching Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
         }
-      ],
-      "librarians": [
-        { "name": "Alice", "experience": 5 },
-        { "name": "Bob", "experience": 10 }
-      ]
-    },
-    "socialMediaPost": {
-      "postId": "a1b2c3d4",
-      "user": {
-        "username": "cool_dude123",
-        "profilePic": "https://example.com/profile.jpg"
-      },
-      "content": "Had an amazing day at the beach!",
-      "likes": 245,
-      "comments": [
-        { "username": "beach_lover", "comment": "Looks fun!" },
-        { "username": "sunny_days", "comment": "Wish I was there!" }
-      ],
-      "postedOn": "2024-10-29T14:32:00Z"
-    },
-    "videoGameCharacter": {
-      "characterName": "Arthas",
-      "game": "World of Warcraft",
-      "class": "Paladin",
-      "level": 60,
-      "abilities": [
-        { "name": "Holy Light", "type": "heal", "power": 120 },
-        { "name": "Divine Shield", "type": "protection", "duration": 10 },
-        { "name": "Judgment", "type": "attack", "power": 80 }
-      ],
-      "equipment": {
-        "weapon": "Frostmourne",
-        "armor": "Plate of the Damned",
-        "accessory": "Lich King's Crown"
-      }
-    },
-    "musicPlaylist": {
-      "playlistName": "Chill Vibes",
-      "createdBy": "user1234",
-      "dateCreated": "2024-10-25",
-      "songs": [
-        { "title": "Night Owl", "artist": "Gerry Rafferty", "duration": "3:34" },
-        { "title": "Dreams", "artist": "Fleetwood Mac", "duration": "4:14" },
-        { "title": "Electric Feel", "artist": "MGMT", "duration": "3:50" }
-      ]
-    }
-  }
-}
+        .container {
+            margin-top: 20px;
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+        .json-card {
+            background: #2c2c3a;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .json-card h3 {
+            color: #ffa726;
+        }
+        .json-card button {
+            background-color: #ffa726;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .json-card button:hover {
+            background-color: #ff9800;
+        }
+        .json-output {
+            background: #1e1e2f;
+            color: #ffa726;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            max-height: 150px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Fetching Showcase</h1>
+    <p>Explore various JSON data sources with dynamic fetch buttons</p>
+
+    <div class="container">
+        <!-- JSON Card 1 -->
+        <div class="json-card">
+            <h3>Bitcoin Price</h3>
+            <button onclick="fetchJSON('https://api.coindesk.com/v1/bpi/currentprice.json', 'output1')">Fetch Price</button>
+            <div class="json-output" id="output1">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 2 -->
+        <div class="json-card">
+            <h3>Random User</h3>
+            <button onclick="fetchJSON('https://randomuser.me/api/', 'output2')">Fetch User</button>
+            <div class="json-output" id="output2">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 3 -->
+        <div class="json-card">
+            <h3>Exchange Rate (USD)</h3>
+            <button onclick="fetchJSON('https://api.exchangerate-api.com/v4/latest/USD', 'output3')">Fetch Rate</button>
+            <div class="json-output" id="output3">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 4 -->
+        <div class="json-card">
+            <h3>Fox Image</h3>
+            <button onclick="fetchJSON('https://randomfox.ca/floof/', 'output4')">Fetch Fox</button>
+            <div class="json-output" id="output4">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 5 -->
+        <div class="json-card">
+            <h3>Random Quote</h3>
+            <button onclick="fetchJSON('https://api.quotable.io/random', 'output5')">Fetch Quote</button>
+            <div class="json-output" id="output5">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 6 -->
+        <div class="json-card">
+            <h3>Dog Image</h3>
+            <button onclick="fetchJSON('https://dog.ceo/api/breeds/image/random', 'output6')">Fetch Dog</button>
+            <div class="json-output" id="output6">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 7 -->
+        <div class="json-card">
+            <h3>Pokemon Data (Ditto)</h3>
+            <button onclick="fetchJSON('https://pokeapi.co/api/v2/pokemon/ditto', 'output7')">Fetch Pokemon</button>
+            <div class="json-output" id="output7">Waiting for data...</div>
+        </div>
+
+        <!-- JSON Card 8 -->
+        <div class="json-card">
+            <h3>Weather in Berlin</h3>
+            <button onclick="fetchJSON('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.405&current_weather=true', 'output8')">Fetch Weather</button>
+            <div class="json-output" id="output8">Waiting for data...</div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchJSON(url, outputId) {
+            try {
+                document.getElementById(outputId).textContent = "Loading...";
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById(outputId).textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById(outputId).textContent = "Error fetching data";
+            }
+        }
+    </script>
+</body>
+</html>
 
 

@@ -122,23 +122,29 @@
     <ul id="task-list"></ul>
     <script>
       let tasks = ["Clean the house", "Do laundry"];
+      
+      // Function to render tasks
       function renderTasks() {
         document.getElementById("task-list").innerHTML = "";
         tasks.forEach(task => {
           document.getElementById("task-list").innerHTML += `<li>${task}</li>`;
         });
       }
+
+      // Function to add a new task to the list
       function addTask() {
         const taskInput = document.getElementById("new-task").value;
         if (taskInput) {
-          tasks.push(taskInput);
-          renderTasks();
-          document.getElementById("new-task").value = "";
+          tasks.push(taskInput); // Add new task
+          renderTasks(); // Update task list
+          document.getElementById("new-task").value = ""; // Clear input field
         }
       }
-      renderTasks();
+
+      renderTasks(); // Initial render
     </script>
   </section>
 
 </body>
 </html>
+

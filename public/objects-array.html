@@ -1,126 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Objects and Arrays Examples</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    section {
-      margin-bottom: 20px;
-    }
-    h2 {
-      color: #333;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      padding: 5px;
-      border-bottom: 1px solid #ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Objects and Arrays Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff8c00;
+            text-align: center;
+        }
+        textarea {
+            width: 90%;
+            height: 150px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #ff8c00;
+            color: #1e1e2f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #ffa64d;
+        }
+        #outputDiv {
+            margin-top: 20px;
+            padding: 20px;
+            width: 90%;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
 <body>
-  <h1>Cool Examples of Objects and Arrays</h1>
 
-  <!-- Example 1: Dynamic To-Do List -->
-  <section>
-    <h2>1. Dynamic To-Do List</h2>
-    <ul id="todo-list"></ul>
-    <script>
-      let tasks = [{ task: "Learn JS", completed: false }, { task: "Workout", completed: true }];
-      tasks.forEach(task => {
-        document.getElementById('todo-list').innerHTML += `<li>${task.task} - ${task.completed ? 'Done' : 'Pending'}</li>`;
-      });
-    </script>
-  </section>
+<h1>Objects and Arrays Examples</h1>
+<textarea id="exampleArea" readonly></textarea><br>
 
-  <!-- Example 2: Product Inventory -->
-  <section>
-    <h2>2. Product Inventory</h2>
-    <ul id="product-list"></ul>
-    <script>
-      let products = [{ name: "Laptop", price: 1200 }, { name: "Phone", price: 800 }];
-      products.forEach(product => {
-        document.getElementById('product-list').innerHTML += `<li>${product.name}: $${product.price}</li>`;
-      });
-    </script>
-  </section>
+<!-- Buttons to load each example -->
+<button onclick="showExample(0)">Array with Object in it</button>
+<button onclick="showExample(1)">Object with Array in it</button>
+<button onclick="showExample(2)">Array of Objects with Nested Arrays</button>
+<button onclick="showExample(3)">Object with Mixed Data Types</button>
+<button onclick="showExample(4)">Complex Nested Object</button>
+<button onclick="showExample(5)">Array of Multiple Objects</button>
+<button onclick="showExample(6)">Dynamic Array with Methods</button>
+<button onclick="showExample(7)">Object with Functions</button>
+<button onclick="showExample(8)">Array of Functions</button><br><br>
 
-  <!-- Example 3: Nested Arrays (Matrix) -->
-  <section>
-    <h2>3. Nested Arrays (Matrix)</h2>
-    <ul id="matrix-list"></ul>
-    <script>
-      let matrix = [[1, 2], [3, 4]];
-      matrix.forEach(row => {
-        document.getElementById('matrix-list').innerHTML += `<li>${row.join(', ')}</li>`;
-      });
-    </script>
-  </section>
+<!-- Div to display the example content -->
+<div id="outputDiv">Example output will appear here...</div>
 
-  <!-- Example 4: Random Quote Generator -->
-  <section>
-    <h2>4. Random Quote Generator</h2>
-    <p id="quote"></p>
-    <script>
-      let quotes = [{ text: "Life is beautiful", author: "Unknown" }, { text: "Code is poetry", author: "WP" }];
-      let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote').innerHTML = `${randomQuote.text} - ${randomQuote.author}`;
-    </script>
-  </section>
+<script>
+    const examples = [
+        `let myArray = [5, 2, 8, 2, 1];
+let myObject = { name: 'John', age: 30, profession: 'Developer' };`,
 
-  <!-- Example 5: Shopping Cart -->
-  <section>
-    <h2>5. Shopping Cart</h2>
-    <ul id="cart-list"></ul>
-    <script>
-      let cart = [{ name: "Apple", price: 1.2 }, { name: "Banana", price: 0.8 }];
-      cart.forEach(item => {
-        document.getElementById('cart-list').innerHTML += `<li>${item.name}: $${item.price}</li>`;
-      });
-    </script>
-  </section>
+        `let myObject = {
+    name: 'Alice',
+    hobbies: ['reading', 'coding', 'hiking'],
+    age: 25
+};`,
 
-  <!-- Example 6: Student Grades Tracker -->
-  <section>
-    <h2>6. Student Grades Tracker</h2>
-    <ul id="grades-list"></ul>
-    <script>
-      let students = [{ name: "John", grade: 85 }, { name: "Jane", grade: 92 }];
-      students.forEach(student => {
-        document.getElementById('grades-list').innerHTML += `<li>${student.name}: ${student.grade}%</li>`;
-      });
-    </script>
-  </section>
+        `let myArray = [
+    { name: 'Bob', age: 28, hobbies: ['cycling', 'chess'] },
+    { name: 'Charlie', age: 32, hobbies: ['guitar', 'gaming'] }
+];`,
 
-  <!-- Example 7: Car Inventory -->
-  <section>
-    <h2>7. Car Dealership Inventory</h2>
-    <ul id="car-list"></ul>
-    <script>
-      let cars = [{ make: "Toyota", model: "Camry", year: 2020 }, { make: "Ford", model: "Mustang", year: 2019 }];
-      cars.forEach(car => {
-        document.getElementById('car-list').innerHTML += `<li>${car.make} ${car.model} (${car.year})</li>`;
-      });
-    </script>
-  </section>
+        `let myObject = {
+    name: 'Dave',
+    info: { address: '123 Street', phone: '123-456-7890' },
+    skills: ['JavaScript', 'Python'],
+    certified: true
+};`,
 
-  <!-- Example 8: Favorite Movies -->
-  <section>
-    <h2>8. Favorite Movies List</h2>
-    <ul id="movies-list"></ul>
-    <script>
-      let movies = [{ title: "Inception", year: 2010 }, { title: "The Matrix", year: 1999 }];
-      movies.forEach(movie => {
-        document.getElementById('movies-list').innerHTML += `<li>${movie.title} (${movie.year})</li>`;
-      });
-    </script>
-  </section>
+        `let myComplexObject = {
+    person: { name: 'Eve', age: 45 },
+    job: { title: 'Engineer', department: 'R&D' },
+    history: {
+        pastJobs: ['Teacher', 'Designer'],
+        education: { degree: 'PhD', major: 'Physics' }
+    }
+};`,
+
+        `let myArray = [
+    { name: 'Frank', age: 25 },
+    { name: 'Grace', age: 27 },
+    { name: 'Hank', age: 30 }
+];`,
+
+        `let myDynamicArray = [1, 2, 3];
+myDynamicArray.push(4);
+myDynamicArray.pop();
+myDynamicArray.unshift(0);`,
+
+        `let myObject = {
+    name: 'Isaac',
+    greet: function() { return 'Hello, ' + this.name; }
+};`,
+
+        `let myArray = [
+    function() { return 'First function'; },
+    function() { return 'Second function'; }
+];`
+    ];
+
+    function showExample(index) {
+        document.getElementById('exampleArea').value = examples[index];
+        document.getElementById('outputDiv').textContent = "Example " + (index + 1) + " loaded. Check the code above.";
+    }
+</script>
+
 </body>
 </html>
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Food Plan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        h1 {
+            text-align: center;
+            color: #495057;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .day {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 10px;
+            width: 30%;
+            min-width: 250px;
+            transition: transform 0.2s;
+        }
+        .day:hover {
+            transform: scale(1.02);
+        }
+        .day h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        .meal {
+            margin: 5px 0;
+            padding: 8px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Weekly Food Plan</h1>
+    <div class="container">
+        <div class="day">
+            <h2>Monday</h2>
+            <div class="meal">Breakfast: Scrambled eggs (3 eggs, 18g protein) + Greek yogurt (200g, 20g protein)</div>
+            <div class="meal">Lunch: Grilled chicken breast (150g, 35g protein) + quinoa (100g cooked, 4g protein)</div>
+            <div class="meal">Dinner: Baked salmon (200g, 40g protein) + steamed broccoli (100g, 3g protein)</div>
+            <div class="meal">Snacks: Protein shake (1 scoop, 25g protein) + almonds (30g, 6g protein)</div>
+        </div>
+
+        <div class="day">
+            <h2>Tuesday</h2>
+            <div class="meal">Breakfast: Oatmeal with protein powder (30g oats, 1 scoop protein, 20g protein)</div>
+            <div class="meal">Lunch: Turkey breast sandwich (150g turkey, 30g protein) + whole grain bread (2 slices, 8g protein)</div>
+            <div class="meal">Dinner: Beef stir-fry (150g beef, 35g protein) + mixed veggies (100g, 3g protein)</div>
+            <div class="meal">Snacks: Cottage cheese (200g, 25g protein) + carrot sticks</div>
+        </div>
+
+        <div class="day">
+            <h2>Wednesday</h2>
+            <div class="meal">Breakfast: Smoothie with spinach, banana, and protein powder (1 scoop, 25g protein)</div>
+            <div class="meal">Lunch: Lentil salad (200g lentils, 18g protein) + feta cheese (50g, 12g protein)</div>
+            <div class="meal">Dinner: Grilled shrimp (200g, 40g protein) + brown rice (100g cooked, 2.5g protein)</div>
+            <div class="meal">Snacks: Hard-boiled eggs (2 eggs, 12g protein) + a handful of nuts</div>
+        </div>
+
+        <div class="day">
+            <h2>Thursday</h2>
+            <div class="meal">Breakfast: Protein pancakes (1 serving, 30g protein)</div>
+            <div class="meal">Lunch: Quinoa bowl with black beans (150g, 10g protein) + chicken (100g, 25g protein)</div>
+            <div class="meal">Dinner: Pork tenderloin (200g, 40g protein) + sweet potato (100g, 2g protein)</div>
+            <div class="meal">Snacks: Greek yogurt (200g, 20g protein) + berries</div>
+        </div>
+
+        <div class="day">
+            <h2>Friday</h2>
+            <div class="meal">Breakfast: Chia pudding with almond milk and protein powder (1 scoop, 25g protein)</div>
+            <div class="meal">Lunch: Tuna salad (150g tuna, 35g protein) + whole grain crackers (30g, 3g protein)</div>
+            <div class="meal">Dinner: Grilled chicken thighs (200g, 45g protein) + mixed greens salad</div>
+            <div class="meal">Snacks: Protein bar (20g protein)</div>
+        </div>
+
+        <div class="day">
+            <h2>Saturday</h2>
+            <div class="meal">Breakfast: Omelette with cheese and veggies (3 eggs, 18g protein)</div>
+            <div class="meal">Lunch: Falafel wrap (3 falafels, 15g protein) + hummus (50g, 5g protein)</div>
+            <div class="meal">Dinner: Baked cod (200g, 40g protein) + asparagus (100g, 3g protein)</div>
+            <div class="meal">Snacks: Edamame (100g, 11g protein) + a scoop of peanut butter (8g protein)</div>
+        </div>
+
+        <div class="day">
+            <h2>Sunday</h2>
+            <div class="meal">Breakfast: Greek yogurt parfait with granola and berries (200g yogurt, 20g protein)</div>
+            <div class="meal">Lunch: Chicken Caesar salad (150g chicken, 35g protein)</div>
+            <div class="meal">Dinner: Turkey meatballs (200g, 40g protein) + zucchini noodles</div>
+            <div class="meal">Snacks: Cottage cheese (200g, 25g protein) + pineapple</div>
+        </div>
+    </div>
+
+</body>
+</html>

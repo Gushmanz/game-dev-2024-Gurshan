@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Cool Moving Background</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: black; /* For contrast */
+    }
+
+    .background {
+      position: absolute;
+      width: 300%;
+      height: 300%;
+      background: radial-gradient(circle at 50% 50%, #ff477e, #ff7096, #46007f, #0b0033);
+      background-size: cover;
+      filter: blur(5px);
+      animation: rotateBackground 20s linear infinite;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/k0Yg3Cv.png') repeat; /* Starry texture */
+      animation: moveStars 50s linear infinite;
+      opacity: 0.7;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255, 0, 150, 0.3), rgba(0, 150, 255, 0.3));
+      mix-blend-mode: overlay;
+      animation: overlayFade 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes rotateBackground {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes moveStars {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
+    }
+
+    @keyframes overlayFade {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="stars"></div>
+  <div class="overlay"></div>
+</body>
+</html>

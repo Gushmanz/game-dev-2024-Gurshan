@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Game Template</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    #game-container {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      background-color: #2d2d2d;
+      border: 2px solid #000;
+      overflow: hidden;
+    }
+
+    #player {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #ff0000;
+      top: 225px;
+      left: 225px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div id="player"></div>
+  </div>
+
+  <script>
+    const player = document.getElementById('player');
+    const gameContainer = document.getElementById('game-container');
+
+    const playerSpeed = 5;
+
+    let playerPosition = {
+      top: 225,
+      left: 225
+    };
+
+    function movePlayer() {
+      player.style.top = `${playerPosition.top}px`;
+      player.style.left = `${playerPosition.left}px`;
+    }
+
+    document.addEventListener('keydown', function (e) {
+      switch (e.key) {
+        case 'ArrowUp':
+          if (playerPosition.top > 0) playerPosition.top -= playerSpeed;
+          break;
+        case 'ArrowDown':
+          if (playerPosition.top < gameContainer.clientHeight - 50) playerPosition.top += playerSpeed;
+          break;
+        case 'ArrowLeft':
+          if (playerPosition.left > 0) playerPosition.left -= playerSpeed;
+          break;
+        case 'ArrowRight':
+          if (playerPosition.left < gameContainer.clientWidth - 50) playerPosition.left += playerSpeed;
+          break;
+      }
+      movePlayer();
+    });
+  </script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cool 3-Level Game</title>
+    <title>Cool 3-Level Game with WASD Controls and Complexity</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
-        #myImg01, #myImg02, #myImg03 {
+        #myImg01, #myImg02, #myImg03, #myImg04 {
             position: absolute;
             width: 80px;
             height: 80px;
@@ -20,18 +20,30 @@
             padding: 5px;
             border: 1px solid black;
         }
+        #timer {
+            position: fixed;
+            top: 40px;
+            left: 10px;
+            font-size: 20px;
+            background-color: lightcoral;
+            padding: 5px;
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body id="myBody" style="background-repeat: repeat; background-size: 80%" background="myBackground01.jpg">
 
 <h1 align="center">Cool 3-Level Game</h1>
 <div id="levelIndicator">Level: 1</div>
+<div id="timer">Time Left: 30s</div>
 
 <script>
     // Global variables
     let myGlobalX = 0;
     let myClock;
     let currentLevel = 1;
+    let timeLeft = 30;
+    let timerInterval;
 
     // Helper function to detect collision
     function myHitOther(my1, my2) {
@@ -55,10 +67,15 @@
             alert('You hit an obstacle! Try again.');
             resetLevel();
         }
+        if (currentLevel === 3 && myHitOther('myImg01', 'myImg04')) {
+            alert('You hit a moving obstacle! Try again.');
+            resetLevel();
+        }
     }
 
     // Function to proceed to the next level
     function nextLevel() {
+        clearInterval(timerInterval);
         currentLevel++;
         if (currentLevel > 3) {
             alert('Congratulations! You completed all levels!');
@@ -69,7 +86,23 @@
 
     // Reset the current level
     function resetLevel() {
+        clearInterval(timerInterval);
         setupLevel();
+    }
+
+    // Timer function
+    function startTimer() {
+        timeLeft = 30;
+        document.getElementById('timer').textContent = `Time Left: ${timeLeft}s`;
+        timerInterval = setInterval(function() {
+            timeLeft--;
+            document.getElementById('timer').textContent = `Time Left: ${timeLeft}s`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert('Time is up! Try again.');
+                resetLevel();
+            }
+        }, 1000);
     }
 
     // Setup game elements for the current level
@@ -79,6 +112,7 @@
         let player = document.getElementById('myImg01');
         let goal = document.getElementById('myImg02');
         let obstacle = document.getElementById('myImg03');
+        let movingObstacle = document.getElementById('myImg04');
 
         player.style.left = '50px';
         player.style.top = '50px';
@@ -87,19 +121,38 @@
             goal.style.left = '400px';
             goal.style.top = '50px';
             obstacle.style.display = 'none';
+            movingObstacle.style.display = 'none';
         } else if (currentLevel === 2) {
             goal.style.left = '600px';
             goal.style.top = '200px';
             obstacle.style.left = '300px';
             obstacle.style.top = '150px';
             obstacle.style.display = 'block';
+            movingObstacle.style.display = 'none';
         } else if (currentLevel === 3) {
             goal.style.left = '700px';
             goal.style.top = '300px';
             obstacle.style.left = '400px';
             obstacle.style.top = '250px';
             obstacle.style.display = 'block';
+            movingObstacle.style.left = '500px';
+            movingObstacle.style.top = '100px';
+            movingObstacle.style.display = 'block';
+            moveObstacle();
         }
+
+        startTimer();
+    }
+
+    // Moving obstacle logic for level 3
+    function moveObstacle() {
+        let movingObstacle = document.getElementById('myImg04');
+        let direction = 1;
+        setInterval(function() {
+            let currentTop = parseInt(movingObstacle.style.top);
+            if (currentTop <= 100 || currentTop >= 400) direction *= -1;
+            movingObstacle.style.top = currentTop + direction * 5 + 'px';
+        }, 100);
     }
 
     // Handle WASD controls for player movement
@@ -130,6 +183,8 @@
 <img id="myImg01" src="myImage01.jpg">
 <img id="myImg02" src="myImage02.jpg">
 <img id="myImg03" src="myImage03.jpg" style="display: none;">
+<img id="myImg04" src="myImage04.jpg" style="display: none;">
 
 </body>
 </html>
+

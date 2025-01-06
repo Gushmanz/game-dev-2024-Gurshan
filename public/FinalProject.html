@@ -1,0 +1,113 @@
+<body id="myBody" style="background-repeat: repeat; background-size: 80%" background="myBackground01.jpg" onkeydown="gameControl(event)">
+  <h1 align="center">3-Level Game Template</h1>
+  <br><br><br><br>
+
+  <script>
+    // Global variables
+    let playerX = 50;  // Player's X position
+    let playerY = 0;   // Player's Y position
+    let currentLevel = 1;  // Start at level 1
+    let moveSpeed = 7;     // Movement speed for the player
+
+    let myInterval = 0;  // To hold interval ID for future use
+    let player = document.getElementById('myImg01');
+    let enemy = document.getElementById('myImg02');
+    let collectible = document.getElementById('myImg03');
+    let levelText = document.getElementById('myDiv01'); // For displaying level info
+
+    // Handle key press events (W, A, S, D)
+    function gameControl(event) {
+      let key = event.key.toLowerCase();  // Normalize key input
+
+      if (currentLevel === 1) {
+        movePlayer(key);
+        checkCollisionWithEnemy();
+      } else if (currentLevel === 2) {
+        movePlayer(key);
+        checkCollectible();
+      } else if (currentLevel === 3) {
+        solveRiddle();
+      }
+    }
+
+    // Function to move the player
+    function movePlayer(key) {
+      if (key === 'd') {  // Move player right
+        playerX += moveSpeed;
+      } else if (key === 'a') {  // Move player left
+        playerX -= moveSpeed;
+      } else if (key === 'w') {  // Move player up
+        playerY -= moveSpeed;
+      } else if (key === 's') {  // Move player down
+        playerY += moveSpeed;
+      }
+
+      // Update player position on screen
+      player.style.left = playerX + 'px';
+      player.style.top = playerY + 'px';
+    }
+
+    // Check collision with the enemy (Level 1)
+    function checkCollisionWithEnemy() {
+      if (checkCollision('myImg01', 'myImg02')) {
+        alert('You lose! Restarting Level 1...');
+        resetPlayerPosition(); // Reset to starting position
+      }
+    }
+
+    // Check if the player has collected the item (Level 2)
+    function checkCollectible() {
+      if (checkCollision('myImg01', 'myImg03')) {
+        alert('You collected the item! Moving to Level 3...');
+        currentLevel = 3;  // Transition to Level 3
+        levelText.innerHTML = 'Level 3: Solve the riddle!';
+      }
+    }
+
+    // Check for collision between two elements
+    function checkCollision(playerId, objectId) {
+      let left1 = parseInt(document.getElementById(playerId).style.left);
+      let top1 = parseInt(document.getElementById(playerId).style.top);
+      let right1 = left1 + parseInt(document.getElementById(playerId).style.width);
+      let bottom1 = top1 + parseInt(document.getElementById(playerId).style.height);
+
+      let left2 = parseInt(document.getElementById(objectId).style.left);
+      let top2 = parseInt(document.getElementById(objectId).style.top);
+      let right2 = left2 + parseInt(document.getElementById(objectId).style.width);
+      let bottom2 = top2 + parseInt(document.getElementById(objectId).style.height);
+
+      // Check for overlap (collision)
+      return right1 >= left2 && bottom1 >= top2 && left1 <= right2 && top1 <= bottom2;
+    }
+
+    // Riddle for Level 3
+    function solveRiddle() {
+      let answer = prompt('Riddle: What comes once in a minute, twice in a moment, but never in a thousand years?');
+      if (answer.toLowerCase() === 'the letter m') {
+        alert('Correct! You won the game!');
+        levelText.innerHTML = 'You completed the game!';
+      } else {
+        alert('Wrong answer. Try again!');
+      }
+    }
+
+    // Reset the player's position for restarting the level
+    function resetPlayerPosition() {
+      playerX = 50;
+      playerY = 0;
+      player.style.left = playerX + 'px';
+      player.style.top = playerY + 'px';
+      levelText.innerHTML = 'Level 1: Avoid the enemy!';
+      currentLevel = 1;  // Reset to level 1
+    }
+  </script>
+
+  <!-- Player, Enemy, and Collectible Images -->
+  <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;" src="myImage01.jpg">
+  <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="myImage02.jpg">
+  <img id="myImg03" style="position:absolute; width:50px; height:50px; top:200px; left:150px;" src="myCollectible.jpg">
+
+  <!-- Level information display -->
+  <div id="myDiv01" style="color: yellow;">Level 1: Avoid the enemy!</div>
+
+</body>

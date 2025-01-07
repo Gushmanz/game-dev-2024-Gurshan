@@ -1,190 +1,143 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cool 3-Level Game with WASD Controls and Complexity</title>
+    <title>Puzzle Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
         }
-        #myImg01, #myImg02, #myImg03, #myImg04 {
-            position: absolute;
-            width: 80px;
-            height: 80px;
+        h1 {
+            margin-top: 20px;
+            font-size: 36px;
         }
-        #levelIndicator {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            font-size: 20px;
-            background-color: lightyellow;
-            padding: 5px;
-            border: 1px solid black;
+        p {
+            font-size: 18px;
         }
-        #timer {
-            position: fixed;
-            top: 40px;
-            left: 10px;
-            font-size: 20px;
-            background-color: lightcoral;
-            padding: 5px;
-            border: 1px solid black;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            justify-content: center;
+            margin: 20px auto;
+            background: #ffffff10;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .tile {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        .tile:hover {
+            transform: scale(1.1);
+        }
+        .empty {
+            background-color: #ccc;
+            cursor: default;
+            box-shadow: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body id="myBody" style="background-repeat: repeat; background-size: 80%" background="myBackground01.jpg">
+<body>
+    <h1>Puzzle Game</h1>
+    <p>Arrange the tiles in numerical order to win the game!</p>
+    <div class="grid" id="puzzleGrid"></div>
 
-<h1 align="center">Cool 3-Level Game</h1>
-<div id="levelIndicator">Level: 1</div>
-<div id="timer">Time Left: 30s</div>
+    <button onclick="resetPuzzle()">Reset Puzzle</button>
 
-<script>
-    // Global variables
-    let myGlobalX = 0;
-    let myClock;
-    let currentLevel = 1;
-    let timeLeft = 30;
-    let timerInterval;
+    <script>
+        const gridSize = 3;
+        let tiles = [];
 
-    // Helper function to detect collision
-    function myHitOther(my1, my2) {
-        let rect1 = document.getElementById(my1).getBoundingClientRect();
-        let rect2 = document.getElementById(my2).getBoundingClientRect();
-        return !(
-            rect1.right < rect2.left ||
-            rect1.left > rect2.right ||
-            rect1.bottom < rect2.top ||
-            rect1.top > rect2.bottom
-        );
-    }
+        function createPuzzle() {
+            const grid = document.getElementById('puzzleGrid');
+            grid.innerHTML = '';
+            tiles = [...Array(gridSize * gridSize).keys()].map(x => x + 1);
+            tiles[tiles.length - 1] = ''; // Last tile is empty
+            shuffle(tiles);
 
-    // Function to handle game logic for each level
-    function myCheckHit() {
-        if (myHitOther('myImg01', 'myImg02')) {
-            alert('You reached the goal for this level!');
-            nextLevel();
+            tiles.forEach((value, index) => {
+                const tile = document.createElement('div');
+                tile.classList.add('tile');
+                if (value === '') tile.classList.add('empty');
+                tile.textContent = value;
+                tile.addEventListener('click', () => moveTile(index));
+                grid.appendChild(tile);
+            });
         }
-        if (currentLevel > 1 && myHitOther('myImg01', 'myImg03')) {
-            alert('You hit an obstacle! Try again.');
-            resetLevel();
-        }
-        if (currentLevel === 3 && myHitOther('myImg01', 'myImg04')) {
-            alert('You hit a moving obstacle! Try again.');
-            resetLevel();
-        }
-    }
 
-    // Function to proceed to the next level
-    function nextLevel() {
-        clearInterval(timerInterval);
-        currentLevel++;
-        if (currentLevel > 3) {
-            alert('Congratulations! You completed all levels!');
-            currentLevel = 1; // Restart the game
-        }
-        setupLevel();
-    }
-
-    // Reset the current level
-    function resetLevel() {
-        clearInterval(timerInterval);
-        setupLevel();
-    }
-
-    // Timer function
-    function startTimer() {
-        timeLeft = 30;
-        document.getElementById('timer').textContent = `Time Left: ${timeLeft}s`;
-        timerInterval = setInterval(function() {
-            timeLeft--;
-            document.getElementById('timer').textContent = `Time Left: ${timeLeft}s`;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                alert('Time is up! Try again.');
-                resetLevel();
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-        }, 1000);
-    }
-
-    // Setup game elements for the current level
-    function setupLevel() {
-        document.getElementById('levelIndicator').textContent = `Level: ${currentLevel}`;
-
-        let player = document.getElementById('myImg01');
-        let goal = document.getElementById('myImg02');
-        let obstacle = document.getElementById('myImg03');
-        let movingObstacle = document.getElementById('myImg04');
-
-        player.style.left = '50px';
-        player.style.top = '50px';
-
-        if (currentLevel === 1) {
-            goal.style.left = '400px';
-            goal.style.top = '50px';
-            obstacle.style.display = 'none';
-            movingObstacle.style.display = 'none';
-        } else if (currentLevel === 2) {
-            goal.style.left = '600px';
-            goal.style.top = '200px';
-            obstacle.style.left = '300px';
-            obstacle.style.top = '150px';
-            obstacle.style.display = 'block';
-            movingObstacle.style.display = 'none';
-        } else if (currentLevel === 3) {
-            goal.style.left = '700px';
-            goal.style.top = '300px';
-            obstacle.style.left = '400px';
-            obstacle.style.top = '250px';
-            obstacle.style.display = 'block';
-            movingObstacle.style.left = '500px';
-            movingObstacle.style.top = '100px';
-            movingObstacle.style.display = 'block';
-            moveObstacle();
         }
 
-        startTimer();
-    }
+        function moveTile(index) {
+            const emptyIndex = tiles.indexOf('');
+            const validMoves = [
+                emptyIndex - 1,
+                emptyIndex + 1,
+                emptyIndex - gridSize,
+                emptyIndex + gridSize
+            ];
 
-    // Moving obstacle logic for level 3
-    function moveObstacle() {
-        let movingObstacle = document.getElementById('myImg04');
-        let direction = 1;
-        setInterval(function() {
-            let currentTop = parseInt(movingObstacle.style.top);
-            if (currentTop <= 100 || currentTop >= 400) direction *= -1;
-            movingObstacle.style.top = currentTop + direction * 5 + 'px';
-        }, 100);
-    }
+            if (validMoves.includes(index)) {
+                [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+                createPuzzle();
 
-    // Handle WASD controls for player movement
-    document.addEventListener('keydown', function(event) {
-        let player = document.getElementById('myImg01');
-        let step = 20; // Distance to move per keypress
-        switch(event.key) {
-            case 'w': // Move up
-                player.style.top = parseInt(player.style.top) - step + 'px';
-                break;
-            case 'a': // Move left
-                player.style.left = parseInt(player.style.left) - step + 'px';
-                break;
-            case 's': // Move down
-                player.style.top = parseInt(player.style.top) + step + 'px';
-                break;
-            case 'd': // Move right
-                player.style.left = parseInt(player.style.left) + step + 'px';
-                break;
+                if (checkWin()) {
+                    setTimeout(() => alert('Congratulations! You solved the puzzle!'), 100);
+                }
+            }
         }
-        myCheckHit();
-    });
 
-    // Initial setup
-    setupLevel();
-</script>
+        function checkWin() {
+            const winningTiles = [...Array(gridSize * gridSize - 1).keys()].map(x => x + 1).concat('');
+            return tiles.every((tile, index) => tile === winningTiles[index]);
+        }
 
-<img id="myImg01" src="myImage01.jpg">
-<img id="myImg02" src="myImage02.jpg">
-<img id="myImg03" src="myImage03.jpg" style="display: none;">
-<img id="myImg04" src="myImage04.jpg" style="display: none;">
+        function resetPuzzle() {
+            createPuzzle();
+        }
 
+        // Initialize puzzle on page load
+        createPuzzle();
+    </script>
 </body>
 </html>
+
 

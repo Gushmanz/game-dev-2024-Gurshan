@@ -59,6 +59,11 @@ function applyGravity() {
     } else if (isOnPlatform()) {
         velocityY = 0;
         isJumping = false;
+        let platform = platforms.find(platform => 
+            playerTop + player.offsetHeight >= platform.top &&
+            playerTop + player.offsetHeight <= platform.top + 5
+        );
+        player.style.top = platform.top - player.offsetHeight + 'px'; // Align player on platform
     }
 }
 

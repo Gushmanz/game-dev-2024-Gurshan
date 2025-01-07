@@ -1,4 +1,4 @@
-<h6> Version 0.0.1 </h6>
+<h6> Version 0.0.2 </h6>
 
 <body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg">
 
@@ -10,7 +10,7 @@
 // Global variables
 let myGlobalX = 0;
 let myClock;
-let gravity = 2;
+let gravity = 1;
 let velocityY = 0;
 let isJumping = false;
 let platforms = [{top: 400, left: 50, width: 300, height: 20}]; // Example platform
@@ -63,14 +63,16 @@ function applyGravity() {
             playerTop + player.offsetHeight >= platform.top &&
             playerTop + player.offsetHeight <= platform.top + 5
         );
-        player.style.top = platform.top - player.offsetHeight + 'px'; // Align player on platform
+        if (platform) {
+            player.style.top = platform.top - player.offsetHeight + 'px'; // Align player on platform
+        }
     }
 }
 
 // Jump function
 function jump() {
     if (!isJumping && isOnPlatform()) {
-        velocityY = -20;
+        velocityY = -15; // Adjust jump height
         isJumping = true;
     }
 }
@@ -92,7 +94,7 @@ function myCheckHit() {
 }
 
 // Game loop
-setInterval(applyGravity, 50);
+setInterval(applyGravity, 30);
 
 </script>
 

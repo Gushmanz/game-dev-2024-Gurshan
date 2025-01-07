@@ -41,9 +41,9 @@ function isOnPlatform() {
         let platformRight = platform.left + platform.width;
         return (
             playerBottom >= platformTop &&
-            playerBottom <= platformTop + 10 && // Tolerance for landing
-            playerRight >= platformLeft &&
-            playerLeft <= platformRight
+            playerBottom <= platformTop + 5 && // Tolerance for landing
+            playerRight > platformLeft &&
+            playerLeft < platformRight
         );
     });
 }
@@ -56,7 +56,7 @@ function applyGravity() {
     if (!isOnPlatform() && playerTop < window.innerHeight - player.offsetHeight) {
         velocityY += gravity;
         player.style.top = playerTop + velocityY + 'px';
-    } else {
+    } else if (isOnPlatform()) {
         velocityY = 0;
         isJumping = false;
     }

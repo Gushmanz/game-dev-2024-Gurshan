@@ -55,7 +55,7 @@ function applyGravity() {
 
     if (!isOnPlatform() && playerTop < window.innerHeight - player.offsetHeight) {
         velocityY += gravity;
-        player.style.top = playerTop + velocityY + 'px';
+        player.style.top = Math.min(playerTop + velocityY, window.innerHeight - player.offsetHeight) + 'px';
     } else if (isOnPlatform()) {
         velocityY = 0;
         isJumping = false;
@@ -111,3 +111,4 @@ setInterval(applyGravity, 50);
 <input type=button value="Jump" onclick="jump()">
 
 </body>
+

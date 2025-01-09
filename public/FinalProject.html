@@ -1,4 +1,4 @@
-<h6>Version 1.1 - Desert Platformer</h6>
+<h6>Version 1.2 - Desert Platformer</h6>
 
 <body id="myBody" style="background-repeat: repeat; background-size: 100%; font-family: 'Press Start 2P', cursive; background: url('desert_background.jpg');">
 
@@ -106,7 +106,7 @@ function applyGravity() {
 // Jump function
 function jump() {
     if (!isJumping && isOnPlatform()) {
-        velocityY = -15;
+        velocityY = -15; // Adjust jump height as needed
         isJumping = true;
     }
 }
@@ -166,7 +166,7 @@ function nextLevel() {
 
 // Keydown event for WASD controls
 document.addEventListener('keydown', (event) => {
-    switch (event.key) {
+    switch (event.key.toLowerCase()) {
         case 'a': // Move left
             movePlayer(-playerSpeed);
             break;

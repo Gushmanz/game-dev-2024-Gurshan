@@ -1,6 +1,6 @@
-<h6>Version 1.0 - Desert Platformer</h6>
+<h6>Version 1.1 - Desert Platformer</h6>
 
-<body id="myBody" style="background-repeat: repeat; background-size: 100%; font-family: 'Press Start 2P', cursive; background: url('back.jpg');">
+<body id="myBody" style="background-repeat: repeat; background-size: 100%; font-family: 'Press Start 2P', cursive; background: url('desert_background.jpg');">
 
 <h1 align="center" style="color: #FFD700; text-shadow: 2px 2px 4px #8B4513;">Desert Platformer Challenge</h1>
 
@@ -12,6 +12,7 @@ let velocityY = 0;
 let isJumping = false;
 let platforms = [];
 let goal = {top: 350, left: 750, width: 50, height: 50};
+let playerSpeed = 10;
 
 // Initialize levels
 const levels = [
@@ -163,6 +164,21 @@ function nextLevel() {
     }
 }
 
+// Keydown event for WASD controls
+document.addEventListener('keydown', (event) => {
+    switch (event.key) {
+        case 'a': // Move left
+            movePlayer(-playerSpeed);
+            break;
+        case 'd': // Move right
+            movePlayer(playerSpeed);
+            break;
+        case 'w': // Jump
+            jump();
+            break;
+    }
+});
+
 // Game loop
 setInterval(applyGravity, 30);
 
@@ -174,14 +190,4 @@ loadLevel(currentLevel);
 <!-- Player -->
 <img id="player" style="position: absolute; width: 50px; height: 50px; top: 0px; left: 50px;" src="pixel_player.png">
 
-<!-- Controls -->
-<div style="text-align: center; margin-top: 20px;">
-    <input type="button" value="Move Left" onclick="movePlayer(-10)" style="font-family: 'Press Start 2P'; padding: 10px;">
-    <input type="button" value="Move Right" onclick="movePlayer(10)" style="font-family: 'Press Start 2P'; padding: 10px;">
-    <input type="button" value="Jump" onclick="jump()" style="font-family: 'Press Start 2P'; padding: 10px;">
-</div>
-
 </body>
-
-
-

@@ -1,11 +1,79 @@
-<h6>Version 1.2 - Desert Platformer</h6>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert Platformer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Press Start 2P', cursive;
+            background: url('desert_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        #start-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #start-menu h1 {
+            color: #FFD700;
+            text-shadow: 2px 2px 4px #8B4513;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+        #start-menu button {
+            background-color: #FFD700;
+            border: 3px solid #8B4513;
+            color: #8B4513;
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #start-menu button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #FFD700;
+        }
+        .platform {
+            position: absolute;
+            background-color: #8B4513;
+            border: 2px solid #000;
+        }
+        #goal {
+            position: absolute;
+            background-color: #FFD700;
+            border: 2px solid #000;
+        }
+        #player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('pixel_player.png') no-repeat center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
 
-<body id="myBody" style="background-repeat: repeat; background-size: 100%; font-family: 'Press Start 2P', cursive; background: url('desert_background.jpg');">
+<div id="start-menu">
+    <h1>Desert Platformer Challenge</h1>
+    <button onclick="startGame()">Begin</button>
+</div>
 
-<h1 align="center" style="color: #FFD700; text-shadow: 2px 2px 4px #8B4513;">Desert Platformer Challenge</h1>
+<img id="player" style="display: none; top: 0px; left: 50px;" src="pixel_player.png">
 
 <script>
-// Global variables
+// Existing game variables and logic
 let currentLevel = 1;
 let gravity = 1;
 let velocityY = 0;
@@ -14,73 +82,42 @@ let platforms = [];
 let goal = {top: 350, left: 750, width: 50, height: 50};
 let playerSpeed = 10;
 
-// Initialize levels
 const levels = [
-    {
-        platforms: [
-            { top: 400, left: 50, width: 200, height: 20 },
-            { top: 300, left: 300, width: 150, height: 20 },
-            { top: 200, left: 500, width: 100, height: 20 }
-        ],
-        goal: { top: 150, left: 750, width: 50, height: 50 }
-    },
-    {
-        platforms: [
-            { top: 450, left: 100, width: 200, height: 20 },
-            { top: 350, left: 400, width: 100, height: 20 },
-            { top: 250, left: 600, width: 150, height: 20 }
-        ],
-        goal: { top: 200, left: 800, width: 50, height: 50 }
-    },
-    {
-        platforms: [
-            { top: 470, left: 50, width: 150, height: 20 },
-            { top: 370, left: 250, width: 120, height: 20 },
-            { top: 270, left: 450, width: 180, height: 20 },
-            { top: 170, left: 700, width: 100, height: 20 }
-        ],
-        goal: { top: 120, left: 850, width: 50, height: 50 }
-    }
+    { platforms: [{ top: 400, left: 50, width: 200, height: 20 }, { top: 300, left: 300, width: 150, height: 20 }, { top: 200, left: 500, width: 100, height: 20 }], goal: { top: 150, left: 750, width: 50, height: 50 }},
+    { platforms: [{ top: 450, left: 100, width: 200, height: 20 }, { top: 350, left: 400, width: 100, height: 20 }, { top: 250, left: 600, width: 150, height: 20 }], goal: { top: 200, left: 800, width: 50, height: 50 }},
+    { platforms: [{ top: 470, left: 50, width: 150, height: 20 }, { top: 370, left: 250, width: 120, height: 20 }, { top: 270, left: 450, width: 180, height: 20 }, { top: 170, left: 700, width: 100, height: 20 }], goal: { top: 120, left: 850, width: 50, height: 50 }}
 ];
+
+// Function to start game
+function startGame() {
+    document.getElementById('start-menu').style.display = 'none';
+    document.getElementById('player').style.display = 'block';
+    loadLevel(currentLevel);
+}
 
 // Function to check collision
 function myHitOther(my1, my2) {
-    let left1 = parseInt(document.getElementById(my1).style.left);
-    let right1 = left1 + parseInt(document.getElementById(my1).style.width);
-    let top1 = parseInt(document.getElementById(my1).style.top);
-    let bottom1 = top1 + parseInt(document.getElementById(my1).style.height);
-    let left2 = my2.left;
-    let right2 = left2 + my2.width;
-    let top2 = my2.top;
-    let bottom2 = top2 + my2.height;
+    let el1 = document.getElementById(my1);
+    let left1 = parseInt(el1.style.left), right1 = left1 + parseInt(el1.style.width),
+        top1 = parseInt(el1.style.top), bottom1 = top1 + parseInt(el1.style.height);
+    let left2 = my2.left, right2 = left2 + my2.width, top2 = my2.top, bottom2 = top2 + my2.height;
     return right1 >= left2 && bottom1 >= top2 && left1 <= right2 && top1 <= bottom2;
 }
 
-// Check if player is on a platform
 function isOnPlatform() {
     let player = document.getElementById('player');
     let playerBottom = parseInt(player.style.top) + parseInt(player.style.height);
     let playerLeft = parseInt(player.style.left);
     let playerRight = playerLeft + parseInt(player.style.width);
-
     return platforms.some(platform => {
-        let platformTop = platform.top;
-        let platformLeft = platform.left;
-        let platformRight = platform.left + platform.width;
-        return (
-            playerBottom >= platformTop &&
-            playerBottom <= platformTop + 5 &&
-            playerRight > platformLeft &&
-            playerLeft < platformRight
-        );
+        let platformTop = platform.top, platformLeft = platform.left, platformRight = platform.left + platform.width;
+        return playerBottom >= platformTop && playerBottom <= platformTop + 5 && playerRight > platformLeft && playerLeft < platformRight;
     });
 }
 
-// Gravity function
 function applyGravity() {
     let player = document.getElementById('player');
     let playerTop = parseInt(player.style.top);
-
     if (!isOnPlatform() && playerTop < window.innerHeight - player.offsetHeight) {
         velocityY += gravity;
         player.style.top = Math.min(playerTop + velocityY, window.innerHeight - player.offsetHeight) + 'px';
@@ -95,65 +132,46 @@ function applyGravity() {
             player.style.top = platform.top - player.offsetHeight + 'px';
         }
     }
-
-    // Check if player reaches goal
     if (myHitOther('player', goal)) {
         alert(`Level ${currentLevel} Complete!`);
         nextLevel();
     }
 }
 
-// Jump function
 function jump() {
     if (!isJumping && isOnPlatform()) {
-        velocityY = -15; // Adjust jump height as needed
+        velocityY = -15; // Adjust jump height
         isJumping = true;
     }
 }
 
-// Move player left or right
 function movePlayer(direction) {
     let player = document.getElementById('player');
-    let newLeft = parseInt(player.style.left) + direction;
-    player.style.left = newLeft + 'px';
+    player.style.left = (parseInt(player.style.left) + direction) + 'px';
 }
 
-// Load level
 function loadLevel(level) {
     platforms = levels[level - 1].platforms;
     goal = levels[level - 1].goal;
-
-    // Clear existing platforms and goal
     document.querySelectorAll('.platform, #goal').forEach(el => el.remove());
-
-    // Render platforms
     platforms.forEach(platform => {
         let platformDiv = document.createElement('div');
         platformDiv.className = 'platform';
-        platformDiv.style.position = 'absolute';
         platformDiv.style.width = platform.width + 'px';
         platformDiv.style.height = platform.height + 'px';
-        platformDiv.style.backgroundColor = '#8B4513';
-        platformDiv.style.border = '2px solid #000';
         platformDiv.style.top = platform.top + 'px';
         platformDiv.style.left = platform.left + 'px';
         document.body.appendChild(platformDiv);
     });
-
-    // Render goal
     let goalDiv = document.createElement('div');
     goalDiv.id = 'goal';
-    goalDiv.style.position = 'absolute';
     goalDiv.style.width = goal.width + 'px';
     goalDiv.style.height = goal.height + 'px';
-    goalDiv.style.backgroundColor = '#FFD700';
-    goalDiv.style.border = '2px solid #000';
     goalDiv.style.top = goal.top + 'px';
     goalDiv.style.left = goal.left + 'px';
     document.body.appendChild(goalDiv);
 }
 
-// Progress to next level
 function nextLevel() {
     if (currentLevel < levels.length) {
         currentLevel++;
@@ -164,30 +182,17 @@ function nextLevel() {
     }
 }
 
-// Keydown event for WASD controls
 document.addEventListener('keydown', (event) => {
     switch (event.key.toLowerCase()) {
-        case 'a': // Move left
-            movePlayer(-playerSpeed);
-            break;
-        case 'd': // Move right
-            movePlayer(playerSpeed);
-            break;
-        case 'w': // Jump
-            jump();
-            break;
+        case 'a': movePlayer(-playerSpeed); break;
+        case 'd': movePlayer(playerSpeed); break;
+        case 'w': jump(); break;
     }
 });
 
-// Game loop
 setInterval(applyGravity, 30);
-
-// Load the first level
-loadLevel(currentLevel);
 
 </script>
 
-<!-- Player -->
-<img id="player" style="position: absolute; width: 50px; height: 50px; top: 0px; left: 50px;" src="pixel_player.png">
-
 </body>
+</html>

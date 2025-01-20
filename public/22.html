@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        h2 {
+            color: #ff6363;
+        }
+        input[type=text] {
+            background-color: #2a2a3d;
+            color: #ffffff;
+            border: 1px solid #4c4c6d;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px 0;
+            width: 70%;
+        }
+        input[type=button] {
+            background-color: #ff6363;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 10px 5px;
+            transition: background-color 0.3s;
+        }
+        input[type=button]:hover {
+            background-color: #ff8080;
+        }
+    </style>
+</head>
+<body onload="{
+   let myStorage = localStorage.getItem('myStoredText');
+   if(myStorage  != null){
+      document.getElementById('myText1').value = myStorage; 
+   }
+}">
+
+<body onunload="{
+   localStorage.setItem('myStoredText', document.getElementById('myText1').value);
+}">    
+
+<h2>t2a09-local-storage-name by Fred. Instructions:</h2>
+
+<input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
+
+<input type="button" value="Store Text" onclick="{
+   localStorage.setItem('myStoredText', document.getElementById('myText1').value);
+   alert(document.getElementById('myText1').value + ' \nHas been stored');
+   document.getElementById('myText1').value = '';
+}">
+
+<input type="button" value="Retrieve Text" onclick="{
+   document.getElementById('myText1').value = localStorage.getItem('myStoredText');
+}"> 
+
+</body>
+</html>

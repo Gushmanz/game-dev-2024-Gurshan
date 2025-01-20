@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spy Name Encryptor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6363;
+        }
+        textarea {
+            background-color: #2a2a3d;
+            color: #ffffff;
+            border: 1px solid #4c4c6d;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+        input[type=button] {
+            background-color: #ff6363;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        input[type=button]:hover {
+            background-color: #ff8080;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spy Name Encryptor</h1>
+
+    <textarea id="myArea01" rows="4" cols="70" placeholder="Enter your text here..."></textarea><br>
+
+    <input type="button" value="Encrypt" onclick="{
+       let myTemp = '';
+       let myString = document.getElementById('myArea01').value.toLowerCase().split('');
+       for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+          myTemp = myString[myLoop];
+          if (myString[myLoop] === 'e') { myTemp = 'f'; }
+          if (myString[myLoop] === 'h') { myTemp = 'i'; }
+          if (myString[myLoop] === 'o') { myTemp = 'p'; }
+          if (myString[myLoop] === 'a') { myTemp = 'b'; }
+          if (myString[myLoop] === 'u') { myTemp = 'v'; }
+          myString[myLoop] = myTemp;
+       }
+       document.getElementById('myArea02').value = myString.join('');
+    }"><br><br>
+
+    <textarea id="myArea02" rows="4" cols="70" placeholder="Encrypted text will appear here..."></textarea><br>
+
+    <input type="button" value="Decrypt" onclick="{
+       let myTemp = '';
+       let myString = document.getElementById('myArea02').value.split('');
+       for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+          myTemp = myString[myLoop];
+          if (myString[myLoop] === 'f') { myTemp = 'e'; }
+          if (myString[myLoop] === 'i') { myTemp = 'h'; }
+          if (myString[myLoop] === 'p') { myTemp = 'o'; }
+          if (myString[myLoop] === 'b') { myTemp = 'a'; }
+          if (myString[myLoop] === 'v') { myTemp = 'u'; }
+          myString[myLoop] = myTemp;
+       }
+       document.getElementById('myArea03').value = myString.join('');
+    }"><br><br>
+
+    <textarea id="myArea03" rows="4" cols="70" placeholder="Decrypted text will appear here..."></textarea>
+</body>
+</html>

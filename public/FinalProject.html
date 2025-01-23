@@ -51,10 +51,10 @@ function startTimer() {
         if (timeLeft <= 0) {
             clearInterval(gameTimer);
 
-            if (currentLevel === 1 && score >= 10) { // Level 2 condition
+            if (currentLevel === 1 && score >= 10) {
                 alert(`Level 1 Complete! Moving to Level 2`);
                 goToLevel2();
-            } else if (currentLevel === 2 && score >= 20) { // Level 3 condition
+            } else if (currentLevel === 2 && score >= 20) {
                 alert(`Level 2 Complete! Moving to Level 3`);
                 goToLevel3();
             } else {
@@ -71,10 +71,6 @@ function resetGame() {
     score = 0;
     timeLeft = 30;
     currentLevel = 1;
-    document.getElementById('player').style.left = '50px';
-    document.getElementById('player').style.top = '200px';
-    document.getElementById('scoreDisplay').innerText = 'Score: 0';
-    document.getElementById('timerDisplay').innerText = 'Time: 30s';
     document.body.innerHTML = originalContent; // Reload original level content
     startTimer();
 }
@@ -82,18 +78,44 @@ function resetGame() {
 // Go to Level 2
 function goToLevel2() {
     currentLevel = 2;
-    document.body.innerHTML = '<h1 style="text-align: center;">Level 2 - New Challenges!</h1>' +
-        '<p style="text-align: center;">Score at least 20 points to advance to Level 3!</p>';
-    score = 10; // Carry over score from Level 1
-    timeLeft = 30;
+    score = 10; // Keep score from Level 1
+    timeLeft = 30; // Reset timer
+    document.body.innerHTML = `
+        <h1 style="text-align: center;">Level 2 - New Challenges!</h1>
+        <p style="text-align: center;">Score at least 20 points to advance to Level 3!</p>
+        <div style="margin: 10px 0; font-family: Arial, sans-serif;">
+            <span id="scoreDisplay" style="font-size: 18px;">Score: ${score}</span>
+            <span id="timerDisplay" style="font-size: 18px; margin-left: 20px;">Time: ${timeLeft}s</span>
+        </div>
+        <img id="player" style="position: absolute; width: 50px; height: 50px; top: 200px; left: 50px;" src="player.png" alt="Player">
+        <img id="obstacle1" style="position: absolute; width: 50px; height: 50px; top: 150px; left: 300px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 1">
+        <img id="obstacle2" style="position: absolute; width: 50px; height: 50px; top: 250px; left: 400px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 2">
+        <div style="margin: 10px 0;">
+            <input type="button" value="Move Right" onclick="movePlayer('right')">
+            <input type="button" value="Move Up" onclick="movePlayer('up')">
+            <input type="button" value="Move Down" onclick="movePlayer('down')">
+        </div>
+    `;
     startTimer();
 }
 
 // Go to Level 3
 function goToLevel3() {
     currentLevel = 3;
-    document.body.innerHTML = '<h1 style="text-align: center;">Level 3 - Final Stage!</h1>' +
-        '<p style="text-align: center;">Congratulations on making it this far! Stay tuned for updates!</p>';
+    document.body.innerHTML = `
+        <h1 style="text-align: center;">Level 3 - Final Stage!</h1>
+        <p style="text-align: center;">Congratulations on making it this far!</p>
+    `;
+}
+
+// Move player
+function movePlayer(direction) {
+    const player = document.getElementById('player');
+    if (direction === 'right') player.style.left = parseInt(player.style.left) + 10 + 'px';
+    if (direction === 'up') player.style.top = parseInt(player.style.top) - 10 + 'px';
+    if (direction === 'down') player.style.top = parseInt(player.style.top) + 10 + 'px';
+    updateScore(1);
+    checkCollision();
 }
 </script>
 
@@ -106,30 +128,11 @@ function goToLevel3() {
 <img id="obstacle1" style="position: absolute; width: 50px; height: 50px; top: 150px; left: 300px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 1">
 <img id="obstacle2" style="position: absolute; width: 50px; height: 50px; top: 250px; left: 400px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 2">
 <img id="obstacle3" style="position: absolute; width: 50px; height: 50px; top: 100px; left: 500px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 3">
-<img id="obstacle4" style="position: absolute; width: 50px; height: 50px; top: 300px; left: 600px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 4">
-<img id="obstacle5" style="position: absolute; width: 50px; height: 50px; top: 200px; left: 700px;" src="https://img.itch.zone/aW1nLzY0ODUyNjUucG5n/315x250%23c/gCJMjc.png" alt="Obstacle 5">
 
 <div style="margin: 10px 0;">
-    <input type="button" value="Move Right" onclick="{
-        const player = document.getElementById('player');
-        player.style.left = parseInt(player.style.left) + 10 + 'px';
-        updateScore(1);
-        checkCollision();
-    }">
-
-    <input type="button" value="Move Up" onclick="{
-        const player = document.getElementById('player');
-        player.style.top = parseInt(player.style.top) - 10 + 'px';
-        updateScore(1);
-        checkCollision();
-    }">
-
-    <input type="button" value="Move Down" onclick="{
-        const player = document.getElementById('player');
-        player.style.top = parseInt(player.style.top) + 10 + 'px';
-        updateScore(1);
-        checkCollision();
-    }">
+    <input type="button" value="Move Right" onclick="movePlayer('right')">
+    <input type="button" value="Move Up" onclick="movePlayer('up')">
+    <input type="button" value="Move Down" onclick="movePlayer('down')">
 </div>
 
 <script>
@@ -137,4 +140,3 @@ function goToLevel3() {
 const originalContent = document.body.innerHTML;
 startTimer();
 </script>
-

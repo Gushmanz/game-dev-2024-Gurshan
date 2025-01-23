@@ -9,6 +9,7 @@
 let score = 0;
 let timeLeft = 30;
 let gameTimer;
+let currentLevel = 1;
 
 // Check if two elements collide
 function isCollision(element1, element2) {
@@ -49,8 +50,17 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             clearInterval(gameTimer);
-            alert(`Time's up! Final Score: ${score}`);
-            resetGame();
+
+            if (currentLevel === 1 && score >= 10) { // Level 2 condition
+                alert(`Level 1 Complete! Moving to Level 2`);
+                goToLevel2();
+            } else if (currentLevel === 2 && score >= 20) { // Level 3 condition
+                alert(`Level 2 Complete! Moving to Level 3`);
+                goToLevel3();
+            } else {
+                alert(`Time's up! Final Score: ${score}`);
+                resetGame();
+            }
         }
     }, 1000);
 }
@@ -60,10 +70,30 @@ function resetGame() {
     clearInterval(gameTimer);
     score = 0;
     timeLeft = 30;
+    currentLevel = 1;
     document.getElementById('player').style.left = '50px';
     document.getElementById('player').style.top = '200px';
     document.getElementById('scoreDisplay').innerText = 'Score: 0';
     document.getElementById('timerDisplay').innerText = 'Time: 30s';
+    document.body.innerHTML = originalContent; // Reload original level content
+    startTimer();
+}
+
+// Go to Level 2
+function goToLevel2() {
+    currentLevel = 2;
+    document.body.innerHTML = '<h1 style="text-align: center;">Level 2 - New Challenges!</h1>' +
+        '<p style="text-align: center;">Score at least 20 points to advance to Level 3!</p>';
+    score = 10; // Carry over score from Level 1
+    timeLeft = 30;
+    startTimer();
+}
+
+// Go to Level 3
+function goToLevel3() {
+    currentLevel = 3;
+    document.body.innerHTML = '<h1 style="text-align: center;">Level 3 - Final Stage!</h1>' +
+        '<p style="text-align: center;">Congratulations on making it this far! Stay tuned for updates!</p>';
 }
 </script>
 
@@ -103,5 +133,8 @@ function resetGame() {
 </div>
 
 <script>
+// Save the original content for resetting the game
+const originalContent = document.body.innerHTML;
 startTimer();
 </script>
+

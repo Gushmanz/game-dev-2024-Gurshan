@@ -46,7 +46,7 @@ function updateScore(points) {
 function startTimer() {
     gameTimer = setInterval(() => {
         timeLeft--;
-        document.getElementById('timerDisplay').innerText = `Time: ${timeLeft}s`;
+        document.getElementId('timerDisplay').innerText = `Time: ${timeLeft}s`;
 
         if (timeLeft <= 0) {
             clearInterval(gameTimer);
